@@ -5,6 +5,9 @@ Carnegie Hall Archives maintains a series of scripts to transform its historical
 
 These scripts have benefitted immensely from a wide community of archiving, preservation, and programming experts who share their code and troubleshooting techniques online. We are excited by the opportunity to participate in this community and have our methods improve through open collaboration and mutual exchange.
 
+###PERFORMANCE HISTORY DATABASE: OPAS
+Some information about OPAS and the Performance History Search
+
 ##CONTENTS
 
 | Script Name         | Purpose           |
