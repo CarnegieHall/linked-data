@@ -1,6 +1,6 @@
 # !/usr/local/bin/python3.4.2
 # ----Copyright (c) 2016 Carnegie Hall | The MIT License (MIT)----
-# ----For the full license terms, please visit https://github.com/CarnegieHall/quality-control/blob/master/LICENSE----
+# ----For the full license terms, please visit https://github.com/CarnegieHall/linked-data/blob/master/LICENSE----
 
 ## Argument[0] is script to run
 ## Argument[1] is path to Countries CSV
