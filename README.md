@@ -6,7 +6,7 @@ Carnegie Hall Archives maintains a series of scripts to transform its historical
 These scripts have benefitted immensely from a wide community of archiving, preservation, and programming experts who share their code and troubleshooting techniques online. We are excited by the opportunity to participate in this community and have our methods improve through open collaboration and mutual exchange.
 
 ###PERFORMANCE HISTORY DATABASE: OPAS
-Some information about OPAS and the Performance History Search
+The Carnegie Hall Archives maintains a database, the [Orchestra Planning and Administration System (OPAS)](http://fineartssoftware.com/), that attempts to track every event, both musical and nonmusical, that has occurred in the public performance spaces of Carnegie Hall since 1891. (Since the CH Archives was not established until 1986, there are some gaps in these records, which we continue to fill in using sources like digitized newspaper listings and reviews, or missing concert programs we buy on eBay.) This database now covers more than 50,000 events across nearly all musical genres, as well as dance and spoken word performances, meetings, lectures, civic rallies, and political conventions. Our database has corresponding records for more than 90,000 artists, 16,000 composers and over 85,000 musical works. Starting in 2013, Carnegie Hall began publishing some of these records to its [website](http://www.carnegiehall.org/PerformanceHistorySearch/), where you can now find the records for nearly 43,000 events from 1891 to the present.  Data cleanup efforts are ongoing, and new records are published each month.  The Carnegie Hall linked data prototype uses this published data set.
 
 ##CONTENTS
 
