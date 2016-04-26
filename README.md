@@ -9,9 +9,9 @@ These scripts have benefitted immensely from a wide community of archiving, pres
 
 | Script Name         | Purpose           |
 | ------------- |-------------|
-| **OPAS_toRDF_entities.py**     | Transforms OPAS data (Entities, i.e. performers, composers, etc.) from SQL into RDF data model |
-|**OPAS_toRDF_works.py**      | Transforms OPAS data (Creative works, i.e. musical compositions, dramatic works, etc.) from SQL into RDF data model |
-|**OPAS_toRDF_events.py** | Transforms OPAS data (Events, i.e. performances, lectures, etc.) from SQL into RDF data model |
+| **[OPAS_toRDF_entities.py](https://github.com/CarnegieHall/linked-data/blob/master/OPAS_toRDF_entities.py)**     | Transforms OPAS data (Entities, i.e. performers, composers, etc.) from SQL into RDF data model |
+|**[OPAS_toRDF_works.py](https://github.com/CarnegieHall/linked-data/blob/master/OPAS_toRDF_events.py)**      | Transforms OPAS data (Creative works, i.e. musical compositions, dramatic works, etc.) from SQL into RDF data model |
+|**[OPAS_toRDF_events.py](https://github.com/CarnegieHall/linked-data/blob/master/OPAS_toRDF_works.py)** | Transforms OPAS data (Events, i.e. performances, lectures, etc.) from SQL into RDF data model |
 
 
 ##USAGE AND LICENSE
