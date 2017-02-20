@@ -44,7 +44,6 @@ gEntities = Graph()
 
 chnames = Namespace('http://data.carnegiehall.org/names/')
 dbp = Namespace('http://dbpedia.org/ontology/')
-dbpedia = Namespace('http://dbpedia.org/resource/')
 gndo = Namespace('http://d-nb.info/standards/elementset/gnd#')
 mbz = Namespace('https://musicbrainz.org/artist/')
 mo = Namespace ('http://purl.org/ontology/mo/')
@@ -401,7 +400,6 @@ instruments_graph_path = os.path.join(os.path.dirname(__file__), os.pardir, 'Gra
 entity_graph_path = os.path.join(os.path.dirname(__file__), os.pardir, 'Graphs', 'entityGraph.nt')
 
 gInstruments.bind("rdfs", RDFS)
-gEntities.bind("dbpedia", dbpedia)
 gEntities.bind("dbpedia-owl", dbp)
 gEntities.bind("foaf", FOAF)
 gEntities.bind("gndo", gndo)
