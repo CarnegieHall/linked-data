@@ -18,7 +18,7 @@ from pytz import timezone
 import pytz
 import rdflib
 from rdflib import Graph, Literal, Namespace, OWL, RDF, URIRef, XSD
-from rdflib.namespace import DCTERMS, FOAF, OWL, RDF, RDFS, SKOS
+from rdflib.namespace import DCTERMS, OWL, RDF, RDFS
 from rdflib.plugins.serializers.nt import NTSerializer
 import re
 import os
