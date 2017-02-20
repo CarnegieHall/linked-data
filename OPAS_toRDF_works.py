@@ -11,7 +11,7 @@ import csv
 import json
 import rdflib
 from rdflib import Graph, Literal, Namespace, OWL, RDF, URIRef, XSD
-from rdflib.namespace import DCTERMS, FOAF, OWL, RDF, RDFS, SKOS
+from rdflib.namespace import DCTERMS, OWL, RDF, RDFS
 from rdflib.plugins.serializers.nt import NTSerializer
 import os
 import sys
@@ -207,7 +207,6 @@ works_graph_path = os.path.join(os.path.dirname(__file__), os.pardir, 'Graphs', 
 
 gWorks.bind("dbpedia", dbpedia)
 gWorks.bind("dcterms", DCTERMS)
-gWorks.bind("foaf", FOAF)
 gWorks.bind("gndo", gndo)
 gWorks.bind("mo", mo)
 gWorks.bind("rdf", RDF)
