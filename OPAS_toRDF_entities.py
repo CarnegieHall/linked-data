@@ -15,7 +15,7 @@ import io
 import json
 import rdflib
 from rdflib import Graph, Literal, Namespace, OWL, RDF, URIRef, XSD
-from rdflib.namespace import DCTERMS, FOAF, OWL, RDF, RDFS, SKOS
+from rdflib.namespace import FOAF, OWL, RDF, RDFS
 from rdflib.plugins.serializers.nt import NTSerializer
 import re
 import os
@@ -403,7 +403,6 @@ entity_graph_path = os.path.join(os.path.dirname(__file__), os.pardir, 'Graphs',
 gInstruments.bind("rdfs", RDFS)
 gEntities.bind("dbpedia", dbpedia)
 gEntities.bind("dbpedia-owl", dbp)
-gEntities.bind("dcterms", DCTERMS)
 gEntities.bind("foaf", FOAF)
 gEntities.bind("gndo", gndo)
 gEntities.bind("mo", mo)
