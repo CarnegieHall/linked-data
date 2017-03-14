@@ -42,6 +42,7 @@ gPlaces = Graph()
 gInstruments = Graph()
 gEntities = Graph()
 
+chinstruments = Namespace('http://data.carnegiehall.org/instruments/')
 chnames = Namespace('http://data.carnegiehall.org/names/')
 dbp = Namespace('http://dbpedia.org/ontology/')
 gndo = Namespace('http://d-nb.info/standards/elementset/gnd#')
@@ -70,32 +71,29 @@ with open(filePath_1, 'rU') as f1:
 
 with open(filePath_2, 'rU') as f2:
     instruments = csv.reader(f2, dialect='excel', delimiter=',', quotechar='"')
+    p = re.compile(r'^http://')
     for row in instruments:
         instrument_id = row[0]
+        instrument_uri = chinstruments[str(instrument_id)]
         name = row[1]
         type_indicator = row[2]
-        uri = row[3]
+        sameAs_uri = row[3]
         predicate = row[4]
         section_id = row[5]
+
+        gInstruments.add( (URIRef(instrument_uri), RDFS.label, Literal(name) ) )
+
+        match = p.findall(sameAs_uri)
+        if type_indicator == 'IND':
+            gInstruments.add( (URIRef(instrument_uri), RDF.type, mo.Instrument) )
 
         instrumentDict[str(instrument_id)] = {}
         instrumentDict[str(instrument_id)]['label'] = name
         instrumentDict[str(instrument_id)]['typeIndicator'] = type_indicator
-        instrumentDict[str(instrument_id)]['uri'] = uri
+        instrumentDict[str(instrument_id)]['uri'] = instrument_uri
+        instrumentDict[str(instrument_id)]['sameAs'] = sameAs_uri
         instrumentDict[str(instrument_id)]['predicate'] = predicate
         instrumentDict[str(instrument_id)]['section_id'] = section_id
-
-for key in instrumentDict:
-    type_indicator = instrumentDict[key]['typeIndicator']
-    name = instrumentDict[key]['label']
-    uri = instrumentDict[key]['uri']
-
-    p = re.compile(r'^http://')
-    match = p.findall(uri)
-    if match:
-        gInstruments.add( (URIRef(uri), RDFS.label, Literal(name) ) )
-        if type_indicator == 'IND':
-            gInstruments.add( (URIRef(uri), RDF.type, mo.Instrument ) )
 
 
 
@@ -161,12 +159,9 @@ for item in sys.argv[4:]:
 
                     if instrument_section != '26':
                         if instrument_type in ('IND', 'ROLE_IND'):
-                            if instrument_uri == 'literal':
-                                gEntities.add( (URIRef(performer_uri), URIRef(instrument_predicate), Literal(instrument_name)) )
-                            else:
-                                gEntities.add( (URIRef(performer_uri), RDF.type, FOAF.Person) )
-                                gEntities.add( (URIRef(performer_uri), FOAF.name, Literal(fullName)) )
-                                gEntities.add( (URIRef(performer_uri), URIRef(instrument_predicate), URIRef(instrument_uri)) )
+                            gEntities.add( (URIRef(performer_uri), RDF.type, FOAF.Person) )
+                            gEntities.add( (URIRef(performer_uri), FOAF.name, Literal(fullName)) )
+                            gEntities.add( (URIRef(performer_uri), URIRef(instrument_predicate), URIRef(instrument_uri)) )
                         elif instrument_type == 'ROLE_GRP':
                             gEntities.add( (URIRef(performer_uri), RDF.type, FOAF.Agent) )
                             gEntities.add( (URIRef(performer_uri), RDFS.label, Literal(fullName)) )
@@ -175,7 +170,9 @@ for item in sys.argv[4:]:
                             gEntities.add( (URIRef(performer_uri), RDF.type, FOAF.Agent) )
                             gEntities.add( (URIRef(performer_uri), RDF.type, mo.MusicArtist) )
                             gEntities.add( (URIRef(performer_uri), RDFS.label, Literal(fullName)) )
+                            gEntities.add( (URIRef(performer_uri), URIRef(instrument_predicate), URIRef(instrument_uri)) )
                         elif instrument_type == 'ANIMAL':
+                            gEntities.add( (URIRef(performer_uri), RDF.type, dbp.animal) )
                             gEntities.add( (URIRef(performer_uri), RDFS.label, Literal(fullName)) )
 
                 dbpedia = row[13]
@@ -217,11 +214,7 @@ for item in sys.argv[4:]:
                     if instrument_id not in instrument_idList:
                         instrument_idList.append(instrument_id)
 
-                        if instrument_type not in ('DEP', 'RDF'):
-                            if instrument_uri == 'literal':
-                                gEntities.add( (URIRef(performer_uri), URIRef(instrument_predicate), Literal(instrument_name)) )
-                            else:
-                                gEntities.add( (URIRef(performer_uri), URIRef(instrument_predicate), URIRef(instrument_uri)) )
+                        gEntities.add( (URIRef(performer_uri), URIRef(instrument_predicate), URIRef(instrument_uri)) )
 
                 entityDict[str(address_id)]['instrument'] = instrument_idList
 
@@ -400,6 +393,8 @@ instruments_graph_path = os.path.join(os.path.dirname(__file__), os.pardir, 'Gra
 entity_graph_path = os.path.join(os.path.dirname(__file__), os.pardir, 'Graphs', 'entityGraph.nt')
 
 gInstruments.bind("rdfs", RDFS)
+gInstruments.bind("rdf", RDF)
+gInstruments.bind("owl", OWL)
 gEntities.bind("dbpedia-owl", dbp)
 gEntities.bind("foaf", FOAF)
 gEntities.bind("gndo", gndo)
