@@ -6,9 +6,7 @@
 ## Argument[1] is path to Countries CSV
 ## Argument[2] is path to Instruments CSV
 ## Argument[3] is path to Composers CSV
-## Argument[4] is path to 1st Entities CSV
-## Argument[5] is path to 2nd Entities CSV
-## Argument[6] is path to 3rd Entities CSV, etc. - can continue adding CSV files as needed
+## Argument[4] is path to Entities CSV -- if more CSVs needed, add as additional args
 
 import csv
 import io
@@ -21,18 +19,32 @@ import re
 import os
 import sys
 
-def format_lifeDate(day, month, year):
-    if year.isnumeric():
-        if month.isnumeric():
-            if day.isnumeric():
-                lifeDate = "{:04d}-{:02d}-{:02d}".format(int(year),int(month),int(day))
-            else:
-                lifeDate = "{:04d}-{:02d}".format(int(year),int(month))
-        else:
-            lifeDate = "{:04d}".format(int(year))
-    else:
-        lifeDate = 'unknown'
-    return lifeDate
+class Entity(object):
+
+	def __init__(self, names, dates):
+		self.names = names
+		self.dates = dates
+	def create_entity_name(self):
+		fullName = ' '.join(self.names).strip()
+		return fullName
+	def create_entity_dates(self):
+		lifeDates = []
+		for date in self.dates:
+			if (date[0].isnumeric() and
+			    date[1].isnumeric() and
+			    date[2].isnumeric()):
+				lifeDate = "{:04d}-{:02d}-{:02d}".format(
+					    int(date[0]),int(date[1]),int(date[2]))
+			elif (date[0].isnumeric() and
+			      date[1].isnumeric()):
+				lifeDate = "{:04d}-{:02d}".format(
+					int(date[0]),int(date[1]))
+			elif date[0].isnumeric():
+				lifeDate = "{:04d}".format(int(date[0]))
+			else:
+				lifeDate = "unknown"
+			lifeDates.append(lifeDate)
+		return lifeDates
 
 countryDict = {}
 instrumentDict = {}
@@ -98,7 +110,7 @@ with open(filePath_2, 'rU') as f2:
 
 
 ## Dict with Titles to assemble Entity names from Address Book
-titleDict = {'10': 'Dame', '18': 'Dr.', '15': 'Lady', '17': 'Princess', '19': 'Reverend', '6': 'Sir'}
+titleDict = {'10': 'Dame', '18': 'Dr.', '15': 'Lady', '17': 'Princess', '19': 'Reverend', '6': 'Sir', '21': 'Rabbi'}
 
 ## Blank list to contain instruments for each entity
 instrumentList = []
@@ -117,34 +129,23 @@ for item in sys.argv[4:]:
                 firstName = row[2]
                 title_id = row[3]
                 title = ''
+                if title_id != '0':
+                    title = titleDict[title_id]
                 suffix = row[4]
-
-                if not firstName:
-                    fullName = lastName
-                else:
-                    if title_id != '0':
-                        title = titleDict[title_id]
-                        if not suffix:
-                            fullName = ''.join([title, ' ', firstName, ' ', lastName])
-                        else:
-                            fullName = ''.join([title, ' ', firstName, ' ', lastName, ' ', suffix])
-                    else:
-                        if not suffix:
-                            fullName = ''.join([firstName, ' ', lastName])
-                        else:
-                            fullName = ''.join([firstName, ' ', lastName, ' ', suffix])
-
-                dayOfBirth = row[5]
-                monthOfBirth = row[6]
-                yearOfBirth = row[7]
-                birthDate = format_lifeDate(dayOfBirth, monthOfBirth, yearOfBirth)
-
+                birthDay = row[5]
+                birthMonth = row[6]
+                birthYear = row[7]
                 birthCountry_id = row[8]
+                deathDay = row[9]
+                deathMonth = row[10]
+                deathYear = row[11]
 
-                dayOfDeath = row[9]
-                monthOfDeath = row[10]
-                yearOfDeath = row[11]
-                deathDate = format_lifeDate(dayOfDeath, monthOfDeath, yearOfDeath)
+                performer = Entity([title, firstName, lastName, suffix], (
+                    [birthYear, birthMonth, birthDay], [deathYear, deathMonth, deathDay]))
+
+                fullName = performer.create_entity_name()
+                birthDate = performer.create_entity_dates()[0]
+                deathDate = performer.create_entity_dates()[1]
 
                 ## Names, instruments, and rdf types/classes will be added to the graph here
                 instrument_idList = []
@@ -159,21 +160,33 @@ for item in sys.argv[4:]:
 
                     if instrument_section != '26':
                         if instrument_type in ('IND', 'ROLE_IND'):
-                            gEntities.add( (URIRef(performer_uri), RDF.type, FOAF.Person) )
-                            gEntities.add( (URIRef(performer_uri), FOAF.name, Literal(fullName)) )
-                            gEntities.add( (URIRef(performer_uri), URIRef(instrument_predicate), URIRef(instrument_uri)) )
+                            gEntities.add(
+                                (URIRef(performer_uri), RDF.type, FOAF.Person) )
+                            gEntities.add(
+                                (URIRef(performer_uri), FOAF.name, Literal(fullName)) )
+                            gEntities.add(
+                                (URIRef(performer_uri), URIRef(instrument_predicate), URIRef(instrument_uri)) )
                         elif instrument_type == 'ROLE_GRP':
-                            gEntities.add( (URIRef(performer_uri), RDF.type, FOAF.Agent) )
-                            gEntities.add( (URIRef(performer_uri), RDFS.label, Literal(fullName)) )
-                            gEntities.add( (URIRef(performer_uri), URIRef(instrument_predicate), URIRef(instrument_uri)) )
+                            gEntities.add(
+                                (URIRef(performer_uri), RDF.type, FOAF.Agent) )
+                            gEntities.add(
+                                (URIRef(performer_uri), RDFS.label, Literal(fullName)) )
+                            gEntities.add(
+                                (URIRef(performer_uri), URIRef(instrument_predicate), URIRef(instrument_uri)) )
                         elif instrument_type == 'ENS':
-                            gEntities.add( (URIRef(performer_uri), RDF.type, FOAF.Agent) )
-                            gEntities.add( (URIRef(performer_uri), RDF.type, mo.MusicArtist) )
-                            gEntities.add( (URIRef(performer_uri), RDFS.label, Literal(fullName)) )
-                            gEntities.add( (URIRef(performer_uri), URIRef(instrument_predicate), URIRef(instrument_uri)) )
+                            gEntities.add(
+                                (URIRef(performer_uri), RDF.type, FOAF.Agent) )
+                            gEntities.add(
+                                (URIRef(performer_uri), RDF.type, mo.MusicArtist) )
+                            gEntities.add(
+                                (URIRef(performer_uri), RDFS.label, Literal(fullName)) )
+                            gEntities.add(
+                                (URIRef(performer_uri), URIRef(instrument_predicate), URIRef(instrument_uri)) )
                         elif instrument_type == 'ANIMAL':
-                            gEntities.add( (URIRef(performer_uri), RDF.type, dbp.animal) )
-                            gEntities.add( (URIRef(performer_uri), RDFS.label, Literal(fullName)) )
+                            gEntities.add(
+                                (URIRef(performer_uri), RDF.type, dbp.animal) )
+                            gEntities.add(
+                                (URIRef(performer_uri), RDFS.label, Literal(fullName)) )
 
                 dbpedia = row[13]
                 lcnaf = row[14]
@@ -214,7 +227,8 @@ for item in sys.argv[4:]:
                     if instrument_id not in instrument_idList:
                         instrument_idList.append(instrument_id)
 
-                        gEntities.add( (URIRef(performer_uri), URIRef(instrument_predicate), URIRef(instrument_uri)) )
+                        gEntities.add(
+                            (URIRef(performer_uri), URIRef(instrument_predicate), URIRef(instrument_uri)) )
 
                 entityDict[str(address_id)]['instrument'] = instrument_idList
 
@@ -243,17 +257,28 @@ with open(filePath_3, 'rU') as f3:
         groupURI = row[2]
         lastName = row[3]
         firstName = row[4]
+        birthDay = row[5]
+        birthMonth = row[6]
+        birthYear = row[7]
+        birthCountry_id = row[8]
+        deathDay = row[9]
+        deathMonth = row[10]
+        deathYear = row[11]
+
+        composer = Entity([firstName, lastName], (
+            [birthYear, birthMonth, birthDay], [deathYear, deathMonth, deathDay]))
+
+        fullName = composer.create_entity_name()
+        birthDate = composer.create_entity_dates()[0]
+        deathDate = composer.create_entity_dates()[1]
 
         if addressLink == '0':
-            if not firstName:
-                fullName = lastName
-            else:
-                fullName = ''.join([firstName, ' ', lastName])
-
             if groupURI not in ('reference', 'subject'):
-                gEntities.add( (URIRef(composer_uri), FOAF.name, Literal(fullName)) )
+                gEntities.add(
+                    (URIRef(composer_uri), FOAF.name, Literal(fullName)) )
             else:
-                gEntities.add( (URIRef(composer_uri), RDFS.label, Literal(fullName)) )
+                gEntities.add(
+                    (URIRef(composer_uri), RDFS.label, Literal(fullName)) )
 
         if composer_id not in idList:
             groupList = []
@@ -261,23 +286,13 @@ with open(filePath_3, 'rU') as f3:
             if groupURI:
                 groupList.append(groupURI)
                 if groupURI not in ('reference', 'subject'):
-                    gEntities.add( (URIRef(composer_uri), gndo.professionOrOccupation, URIRef(groupURI)) )
+                    gEntities.add(
+                        (URIRef(composer_uri), gndo.professionOrOccupation, URIRef(groupURI)) )
             else:
                 groupURI = 'http://id.loc.gov/vocabulary/relators/cmp'
                 groupList.append(groupURI)
-                gEntities.add( (URIRef(composer_uri), gndo.professionOrOccupation, URIRef(groupURI)) )
-
-            dayOfBirth = row[5]
-            monthOfBirth = row[6]
-            yearOfBirth = row[7]
-            birthDate = format_lifeDate(dayOfBirth, monthOfBirth, yearOfBirth)
-
-            birthCountry_id = row[8]
-
-            dayOfDeath = row[9]
-            monthOfDeath = row[10]
-            yearOfDeath = row[11]
-            deathDate = format_lifeDate(dayOfDeath, monthOfDeath, yearOfDeath)
+                gEntities.add(
+                    (URIRef(composer_uri), gndo.professionOrOccupation, URIRef(groupURI)) )
 
             ## This section deals with external URI references
             linkCode = row[12]
@@ -327,12 +342,14 @@ with open(filePath_3, 'rU') as f3:
                 if groupURI not in groupList:
                     groupList.append(groupURI)
                     if groupURI not in ('reference', 'subject'):
-                        gEntities.add( (URIRef(composer_uri), gndo.professionOrOccupation, URIRef(groupURI)) )
+                        gEntities.add(
+                            (URIRef(composer_uri), gndo.professionOrOccupation, URIRef(groupURI)) )
             else:
                 groupURI = 'http://id.loc.gov/vocabulary/relators/cmp'
                 if groupURI not in groupList:
                     groupList.append(groupURI)
-                    gEntities.add( (URIRef(composer_uri), gndo.professionOrOccupation, URIRef(groupURI)) )
+                    gEntities.add(
+                        (URIRef(composer_uri), gndo.professionOrOccupation, URIRef(groupURI)) )
 
 
             if addressLink == '0':
@@ -350,18 +367,24 @@ for key in entityDict:
     deathDate = entityDict[str(key)]['death date']
     if birthDate != 'unknown':
         if len(birthDate) == 10:
-            gEntities.add( (URIRef(entityURI), schema.birthDate, Literal(birthDate, datatype=XSD.date)) )
+            gEntities.add(
+                (URIRef(entityURI), schema.birthDate, Literal(birthDate, datatype=XSD.date)) )
         elif len(birthDate) == 7:
-            gEntities.add( (URIRef(entityURI), schema.birthDate, Literal(birthDate, datatype=XSD.gYearMonth)) )
+            gEntities.add(
+                (URIRef(entityURI), schema.birthDate, Literal(birthDate, datatype=XSD.gYearMonth)) )
         elif len(birthDate) == 4:
-            gEntities.add( (URIRef(entityURI), schema.birthDate, Literal(birthDate, datatype=XSD.gYear)) )
+            gEntities.add(
+                (URIRef(entityURI), schema.birthDate, Literal(birthDate, datatype=XSD.gYear)) )
     if deathDate != 'unknown':
         if len(deathDate) == 10:
-            gEntities.add( (URIRef(entityURI), schema.deathDate, Literal(deathDate, datatype=XSD.date)) )
+            gEntities.add(
+                (URIRef(entityURI), schema.deathDate, Literal(deathDate, datatype=XSD.date)) )
         elif len(deathDate) == 7:
-            gEntities.add( (URIRef(entityURI), schema.deathDate, Literal(deathDate, datatype=XSD.gYearMonth)) )
+            gEntities.add(
+                (URIRef(entityURI), schema.deathDate, Literal(deathDate, datatype=XSD.gYearMonth)) )
         elif len(deathDate) == 4:
-            gEntities.add( (URIRef(entityURI), schema.deathDate, Literal(deathDate, datatype=XSD.gYear)) )
+            gEntities.add(
+                (URIRef(entityURI), schema.deathDate, Literal(deathDate, datatype=XSD.gYear)) )
 
     dbpedia = entityDict[str(key)]['dbpedia']
     if dbpedia:
