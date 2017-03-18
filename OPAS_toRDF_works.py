@@ -16,6 +16,39 @@ from rdflib.plugins.serializers.nt import NTSerializer
 import os
 import sys
 
+class Work(object):
+
+    def __init__(self, title, dates):
+        self.title = title
+        self.dates = dates
+    def create_work_dates(self):
+        dateCirca = self.dates[0]
+        if dateCirca == 'c':
+            dateCirca = 'c. '
+        if dateCirca == 'C':
+            dateCirca = 'c. '
+        if dateCirca == '?':
+            dateCirca = 'c. '
+        if dateCirca == '-':
+            dateCirca = 'before '
+
+        dateStart = self.dates[1]
+        dateEnd = self.dates[2]
+        if dateCirca:
+            if dateEnd:
+                workDate = ''.join([dateCirca, dateStart, '-', dateEnd])
+            else:
+                workDate = ''.join([dateCirca, dateStart])
+        else:
+            if dateStart:
+                if dateEnd:
+                    workDate = ''.join([dateStart, '-', dateEnd])
+                else:
+                    workDate = dateStart
+            else:
+                workDate = ''
+        return workDate
+
 genreDict = {}
 groupsDict = {}
 worksDict = {}
@@ -89,32 +122,10 @@ with open(filePath_3, 'rU') as f3:
         work_uri = chworks[work_id]
         composer_id = row[1]
         composer_uri = composers_tempDict[composer_id]['uri']
-        printTitle = row[2]
+        title = row[2]
         dateCirca = row[3]
-        if dateCirca == 'c':
-            dateCirca = 'c. '
-        if dateCirca == 'C':
-            dateCirca = 'c. '
-        if dateCirca == '?':
-            dateCirca = 'c. '
-        if dateCirca == '-':
-            dateCirca = 'before '
         dateStart = row[4]
         dateEnd = row[5]
-        if dateCirca:
-            if dateEnd:
-                date = ''.join([dateCirca, dateStart, '-', dateEnd])
-            else:
-                date = ''.join([dateCirca, dateStart])
-        else:
-            if dateStart:
-                if dateEnd:
-                    date = ''.join([dateStart, '-', dateEnd])
-                else:
-                    date = dateStart
-            else:
-                date = ''
-
         contributor_id = row[6]
         contributor_role = row[7]
         contributorDict = {}
@@ -122,6 +133,8 @@ with open(filePath_3, 'rU') as f3:
             contributorDict['id'] = contributor_id
             contributorDict['role'] = contributor_role
 
+        work = Work(title, [dateCirca, dateStart, dateEnd])
+        work_date = work.create_work_dates()
 
         if work_id not in work_idList:
             work_idList.append(work_id)
@@ -134,7 +147,7 @@ with open(filePath_3, 'rU') as f3:
 
             genre_id = row[10]
 
-            gWorks.add( (URIRef(work_uri), RDFS.label, Literal(printTitle.encode('utf-8')) ) )
+            gWorks.add( (URIRef(work_uri), RDFS.label, Literal(work.title.encode('utf-8')) ) )
 
             if genre_id != '0':
                 if genreDict[str(genre_id)] != 'non-musical':
@@ -145,11 +158,11 @@ with open(filePath_3, 'rU') as f3:
                 else:
                     gWorks.add( (URIRef(work_uri), RDF.type, gndo.Work ) )
                     gWorks.add( (URIRef(work_uri), RDF.type, schema.CreativeWork ) )
-            if date:
-                if len(date) == 4:
-                    gWorks.add( (URIRef(work_uri), DCTERMS.created, Literal(date, datatype=XSD.gYear) ) )
+            if work_date:
+                if len(work_date) == 4:
+                    gWorks.add( (URIRef(work_uri), DCTERMS.created, Literal(work_date, datatype=XSD.gYear) ) )
                 else:
-                    gWorks.add( (URIRef(work_uri), DCTERMS.created, Literal(date) ) )
+                    gWorks.add( (URIRef(work_uri), DCTERMS.created, Literal(work_date) ) )
 
             if contributor_id != '0':
                 contributor_idList = []
@@ -164,10 +177,10 @@ with open(filePath_3, 'rU') as f3:
 
 
             worksDict[str(work_id)] = {}
-            worksDict[str(work_id)]['title'] = printTitle
+            worksDict[str(work_id)]['title'] = work.title
             worksDict[str(work_id)]['composer_id'] = composer_id
             worksDict[str(work_id)]['contributor'] = contributorList
-            worksDict[str(work_id)]['date'] = date
+            worksDict[str(work_id)]['date'] = work_date
             worksDict[str(work_id)]['uri'] = work_uri
             worksDict[str(work_id)]['genre_id'] = genre_id
             for link in linkDict:
