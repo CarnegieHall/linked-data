@@ -108,10 +108,6 @@ with open(filePath_2, 'rU') as f2:
         instrumentDict[str(instrument_id)]['section_id'] = section_id
 
 
-
-## Dict with Titles to assemble Entity names from Address Book
-titleDict = {'10': 'Dame', '18': 'Dr.', '15': 'Lady', '17': 'Princess', '19': 'Reverend', '6': 'Sir', '21': 'Rabbi'}
-
 ## Blank list to contain instruments for each entity
 instrumentList = []
 
@@ -127,10 +123,7 @@ for item in sys.argv[4:]:
                 idList.append(address_id)
                 lastName = row[1]
                 firstName = row[2]
-                title_id = row[3]
-                title = ''
-                if title_id != '0':
-                    title = titleDict[title_id]
+                title = row[3]
                 suffix = row[4]
                 birthDay = row[5]
                 birthMonth = row[6]
