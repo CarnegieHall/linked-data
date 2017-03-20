@@ -6,7 +6,7 @@
 ## Argument[1] is path to Countries CSV
 ## Argument[2] is path to Instruments CSV
 ## Argument[3] is path to Composers CSV
-## Argument[4] is path to Entities CSV -- if more CSVs needed, add as additional args
+## Argument[4] is path to Performers CSV -- if more CSVs needed, add as additional args
 
 import csv
 import io
@@ -111,6 +111,10 @@ with open(filePath_2, 'rU') as f2:
 ## Blank list to contain instruments for each entity
 instrumentList = []
 
+## Instrument is used to set rdf:type (foaf:Person or foaf:Agent)
+## For non-performing composers, gender will set rdf:type
+## (Group/collective composers don't have gender, therefore foaf:Agent)
+
 for item in sys.argv[4:]:
     ## Blank list of IDs to check for repeat rows while iterating each CSV
     idList = []
@@ -121,6 +125,7 @@ for item in sys.argv[4:]:
             performer_uri = chnames[str(address_id)]
             if address_id not in idList:
                 idList.append(address_id)
+                foafClass = ''
                 lastName = row[1]
                 firstName = row[2]
                 title = row[3]
@@ -159,6 +164,7 @@ for item in sys.argv[4:]:
                                 (URIRef(performer_uri), FOAF.name, Literal(fullName)) )
                             gEntities.add(
                                 (URIRef(performer_uri), URIRef(instrument_predicate), URIRef(instrument_uri)) )
+                            foafClass = 'Person'
                         elif instrument_type == 'ROLE_GRP':
                             gEntities.add(
                                 (URIRef(performer_uri), RDF.type, FOAF.Agent) )
@@ -166,6 +172,7 @@ for item in sys.argv[4:]:
                                 (URIRef(performer_uri), RDFS.label, Literal(fullName)) )
                             gEntities.add(
                                 (URIRef(performer_uri), URIRef(instrument_predicate), URIRef(instrument_uri)) )
+                            foafClass = 'Agent'
                         elif instrument_type == 'ENS':
                             gEntities.add(
                                 (URIRef(performer_uri), RDF.type, FOAF.Agent) )
@@ -175,11 +182,13 @@ for item in sys.argv[4:]:
                                 (URIRef(performer_uri), RDFS.label, Literal(fullName)) )
                             gEntities.add(
                                 (URIRef(performer_uri), URIRef(instrument_predicate), URIRef(instrument_uri)) )
+                            foafClass = 'Agent'
                         elif instrument_type == 'ANIMAL':
                             gEntities.add(
                                 (URIRef(performer_uri), RDF.type, dbp.animal) )
                             gEntities.add(
                                 (URIRef(performer_uri), RDFS.label, Literal(fullName)) )
+                            foafClass = 'Agent'
 
                 dbpedia = row[13]
                 lcnaf = row[14]
@@ -206,6 +215,7 @@ for item in sys.argv[4:]:
                 entityDict[str(address_id)]['mbz'] = mbz
                 entityDict[str(address_id)]['uri'] = performer_uri
                 entityDict[str(address_id)]['composer id'] = ''
+                entityDict[str(address_id)]['foaf'] = foafClass
 
 
             else:
@@ -244,6 +254,7 @@ with open(filePath_3, 'rU') as f3:
         addressLink = row[1]
         if addressLink != '0':
             composer_uri = entityDict[str(addressLink)]['uri']
+            foafClass = entityDict[str(addressLink)]['foaf']
         else:
             composer_uri = chnames[entity_id]
 
@@ -257,6 +268,7 @@ with open(filePath_3, 'rU') as f3:
         deathDay = row[9]
         deathMonth = row[10]
         deathYear = row[11]
+        gender = row[12]
 
         composer = Entity([firstName, lastName], (
             [birthYear, birthMonth, birthDay], [deathYear, deathMonth, deathDay]))
@@ -264,14 +276,6 @@ with open(filePath_3, 'rU') as f3:
         fullName = composer.create_entity_name()
         birthDate = composer.create_entity_dates()[0]
         deathDate = composer.create_entity_dates()[1]
-
-        if addressLink == '0':
-            if groupURI not in ('reference', 'subject'):
-                gEntities.add(
-                    (URIRef(composer_uri), FOAF.name, Literal(fullName)) )
-            else:
-                gEntities.add(
-                    (URIRef(composer_uri), RDFS.label, Literal(fullName)) )
 
         if composer_id not in idList:
             groupList = []
@@ -288,8 +292,8 @@ with open(filePath_3, 'rU') as f3:
                     (URIRef(composer_uri), gndo.professionOrOccupation, URIRef(groupURI)) )
 
             ## This section deals with external URI references
-            linkCode = row[12]
-            link = row[13]
+            linkCode = row[13]
+            link = row[14]
             linkDict = {'dbpedia': '', 'lcnaf': '', 'mbz': '', 'geobirth': ''}
             if linkCode in linkDict:
                 linkDict[str(linkCode)] = link
@@ -299,6 +303,23 @@ with open(filePath_3, 'rU') as f3:
                 ## Index uses new ID that has been padded to 1 million
                 ## We still store the original composer ID so we can link to works records
 
+                if groupURI not in ('reference', 'subject'):
+                        if gender:
+                                foafClass = 'Person'
+                                gEntities.add (
+                                        (URIRef(composer_uri), RDF.type, FOAF.Person) )
+                                gEntities.add(
+                                        (URIRef(composer_uri), FOAF.name, Literal(fullName)) )
+                        else:
+                                foafClass = 'Agent'
+                                gEntities.add (
+                                        (URIRef(composer_uri), RDF.type, FOAF.Agent) )
+                                gEntities.add(
+                                        (URIRef(composer_uri), RDFS.label, Literal(fullName)) )
+                elif groupURI != 'reference':
+                        gEntities.add(
+                                (URIRef(composer_uri), RDFS.label, Literal(fullName)) )
+                
                 entityDict[str(entity_id)] = {}
                 entityDict[str(entity_id)]['composer id'] = composer_id
                 entityDict[str(entity_id)]['uri'] = composer_uri
@@ -310,6 +331,7 @@ with open(filePath_3, 'rU') as f3:
                 entityDict[str(entity_id)]['birth date'] = birthDate
                 entityDict[str(entity_id)]['birth country id'] = birthCountry_id
                 entityDict[str(entity_id)]['death date'] = deathDate
+                entityDict[str(entity_id)]['foaf'] = foafClass
                 entityDict[str(entity_id)]['address book link'] = ''
                 for link in linkDict:
                     entityDict[str(entity_id)][str(link)] = linkDict[link]
@@ -319,6 +341,22 @@ with open(filePath_3, 'rU') as f3:
                 ## Original entity name (from Address Book) does not need to change
                 ## Birth/death dates, external links might NOT be in address book, so we add/replace them
 
+                if not foafClass:#Composer was not a performer, but was in Address Book as Licensee
+                        if gender:
+                                foafClass = 'Person'
+                                gEntities.add (
+                                        (URIRef(composer_uri), RDF.type, FOAF.Person) )
+                                gEntities.add(
+                                        (URIRef(composer_uri), FOAF.name, Literal(fullName)) )
+                        else:
+                                foafClass = 'Agent'
+                                gEntities.add (
+                                        (URIRef(composer_uri), RDF.type, FOAF.Agent) )
+                                gEntities.add(
+                                        (URIRef(composer_uri), RDFS.label, Literal(fullName)) )
+
+                        entityDict[str(addressLink)]['foaf'] = foafClass
+                
                 entityDict[str(addressLink)]['composer id'] = composer_id
                 entityDict[str(addressLink)]['group uri'] = groupList
                 entityDict[str(addressLink)]['birth date'] = birthDate
