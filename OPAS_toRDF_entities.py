@@ -13,7 +13,7 @@ import io
 import json
 import rdflib
 from rdflib import Graph, Literal, Namespace, OWL, RDF, URIRef, XSD
-from rdflib.namespace import FOAF, OWL, RDF, RDFS
+from rdflib.namespace import FOAF, OWL, RDF, RDFS, SKOS
 from rdflib.plugins.serializers.nt import NTSerializer
 import re
 import os
@@ -394,6 +394,7 @@ with open(filePath_3, 'rU') as f3:
 ## for linked entities, these are not added to graph until full entityDict has been created
 for key in entityDict:
     entityURI = entityDict[str(key)]['uri']
+    groupList = entityDict[str(key)]['group uri']
     birthDate = entityDict[str(key)]['birth date']
     deathDate = entityDict[str(key)]['death date']
     if birthDate != 'unknown':
@@ -419,11 +420,17 @@ for key in entityDict:
 
     dbpedia = entityDict[str(key)]['dbpedia']
     if dbpedia:
-        gEntities.add( (URIRef(entityURI), OWL.sameAs, URIRef(dbpedia)) )
+        if 'subject' in groupList:
+                gEntities.add( (URIRef(entityURI), SKOS.closeMatch, URIRef(dbpedia)) )
+        else:
+                gEntities.add( (URIRef(entityURI), OWL.sameAs, URIRef(dbpedia)) )
 
     lcnaf = entityDict[str(key)]['lcnaf']
     if lcnaf:
-        gEntities.add( (URIRef(entityURI), OWL.sameAs, URIRef(lcnaf)) )
+        if 'subject' in groupList:
+                gEntities.add( (URIRef(entityURI), SKOS.closeMatch, URIRef(lcnaf)) )
+        else:
+                gEntities.add( (URIRef(entityURI), OWL.sameAs, URIRef(lcnaf)) )
 
     mbz = entityDict[str(key)]['mbz']
     if mbz:
@@ -456,6 +463,7 @@ gEntities.bind("mo", mo)
 gEntities.bind("rdf", RDF)
 gEntities.bind("rdfs", RDFS)
 gEntities.bind("schema", schema)
+gEntities.bind("skos", SKOS)
 
 # gPlaces = gPlaces.serialize(destination=places_graph_path, format='nt')
 gInstruments = gInstruments.serialize(destination=instruments_graph_path, format='nt')
