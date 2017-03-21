@@ -366,8 +366,8 @@ with open(filePath_3, 'rU') as f3:
                     entityDict[str(addressLink)][str(linkCode)] = link
 
         else:
-            linkCode = row[12]
-            link = row[13]
+            linkCode = row[13]
+            link = row[14]
 
             if groupURI:
                 if groupURI not in groupList:
