@@ -3,9 +3,8 @@
 # ----For the full license terms, please visit https://github.com/CarnegieHall/linked-data/blob/master/LICENSE----
 
 ## Argument[0] is script to run
-## Argument[1] is path to genres CSV
-## Argument[2] is path to composers CSV
-## Argument[3] is path to Works CSV
+## Argument[1] is path to composers CSV
+## Argument[2] is path to Works CSV
 
 import csv
 import json
@@ -49,7 +48,6 @@ class Work(object):
                 workDate = ''
         return workDate
 
-genreDict = {}
 groupsDict = {}
 worksDict = {}
 contributorList = []
@@ -66,22 +64,6 @@ schema = Namespace('http://schema.org/')
 
 filePath_1 = sys.argv[1]
 filePath_2 = sys.argv[2]
-filePath_3 = sys.argv[3]
-
-with open(filePath_1, 'rU') as f1:
-    genres = csv.reader(f1, dialect='excel', delimiter=',', quotechar='"')
-    for row in genres:
-        genre_id = row[0]
-        label = row[1]
-
-        if genre_id in ('18', '52', '53', '75', '178', '181', '185'):
-            genre_category = 'non-musical'
-        else:
-            genre_category = 'MusicalWork'
-
-        genreDict[str(genre_id)] = {}
-        genreDict[str(genre_id)]['label'] = label
-        genreDict[str(genre_id)]['category'] = genre_category
 
 composer_idList = []
 work_idList = []
@@ -93,7 +75,7 @@ contributor_idList = []
 ## re-create the composer URI in this temporary dict
 composers_tempDict = {}
 
-with open(filePath_2, 'rU') as f2:
+with open(filePath_1, 'rU') as f2:
     composers = csv.reader(f2, dialect='excel', delimiter=',', quotechar='"')
     for row in composers:
         composer_id = row[0]
@@ -115,7 +97,7 @@ with open(filePath_2, 'rU') as f2:
                 groupURI = 'http://id.loc.gov/vocabulary/relators/cmp'
                 composers_tempDict[str(composer_id)]['group uri'] = groupURI
 
-with open(filePath_3, 'rU') as f3:
+with open(filePath_2, 'rU') as f3:
     works = csv.reader(f3, dialect='excel', delimiter=',', quotechar='"')
     for row in works:
         work_id = row[0]
@@ -145,19 +127,18 @@ with open(filePath_3, 'rU') as f3:
             if linkCode in linkDict:
                 linkDict[str(linkCode)] = link
 
-            genre_id = row[10]
+            genre_code = row[10]
 
             gWorks.add( (URIRef(work_uri), RDFS.label, Literal(work.title.encode('utf-8')) ) )
 
-            if genre_id != '0':
-                if genreDict[str(genre_id)] != 'non-musical':
-                    gWorks.add( (URIRef(work_uri), RDF.type, mo.MusicalWork ) )
-                    gWorks.add( (URIRef(work_uri), RDF.type, gndo.MusicalWork ) )
-                    gWorks.add( (URIRef(work_uri), RDF.type, schema.MusicComposition ) )
-                    gWorks.add( (URIRef(work_uri), DCTERMS.creator, URIRef(composer_uri) ) )
-                else:
-                    gWorks.add( (URIRef(work_uri), RDF.type, gndo.Work ) )
-                    gWorks.add( (URIRef(work_uri), RDF.type, schema.CreativeWork ) )
+            if genre_code != 'non-musical':
+                gWorks.add( (URIRef(work_uri), RDF.type, mo.MusicalWork ) )
+                gWorks.add( (URIRef(work_uri), RDF.type, gndo.MusicalWork ) )
+                gWorks.add( (URIRef(work_uri), RDF.type, schema.MusicComposition ) )
+                gWorks.add( (URIRef(work_uri), DCTERMS.creator, URIRef(composer_uri) ) )
+            else:
+                gWorks.add( (URIRef(work_uri), RDF.type, gndo.Work ) )
+                gWorks.add( (URIRef(work_uri), RDF.type, schema.CreativeWork ) )
             if work_date:
                 if len(work_date) == 4:
                     gWorks.add( (URIRef(work_uri), DCTERMS.created, Literal(work_date, datatype=XSD.gYear) ) )
@@ -182,7 +163,7 @@ with open(filePath_3, 'rU') as f3:
             worksDict[str(work_id)]['contributor'] = contributorList
             worksDict[str(work_id)]['date'] = work_date
             worksDict[str(work_id)]['uri'] = work_uri
-            worksDict[str(work_id)]['genre_id'] = genre_id
+            worksDict[str(work_id)]['genre_code'] = genre_code
             for link in linkDict:
                 worksDict[str(work_id)][link] = linkDict[link]
         else:
@@ -214,7 +195,6 @@ for key in worksDict:
         gWorks.add( (URIRef(work_uri), OWL.sameAs, URIRef(mbz_link)) )
 
 
-genre_dict_path = os.path.join(os.path.dirname(__file__), os.pardir, 'JSON_dicts', 'genreDict.json')
 works_dict_path = os.path.join(os.path.dirname(__file__), os.pardir, 'JSON_dicts', 'worksDict.json')
 works_graph_path = os.path.join(os.path.dirname(__file__), os.pardir, 'Graphs', 'worksGraph.nt')
 
@@ -227,9 +207,6 @@ gWorks.bind("rdfs", RDFS)
 gWorks.bind("schema", schema)
 
 gWorks = gWorks.serialize(destination=works_graph_path, format='nt')
-
-with open(genre_dict_path, 'w') as f1:
-    json.dump(genreDict, f1)
 
 with open(works_dict_path, 'w') as f2:
     json.dump(worksDict, f2)
