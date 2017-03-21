@@ -141,7 +141,8 @@ with open(filePath_2, 'rU') as f3:
                 gWorks.add( (URIRef(work_uri), RDF.type, schema.CreativeWork ) )
             if work_date:
                 if len(work_date) == 4:
-                    gWorks.add( (URIRef(work_uri), DCTERMS.created, Literal(work_date, datatype=XSD.gYear) ) )
+                    gWorks.add(
+                        (URIRef(work_uri), DCTERMS.created, Literal(work_date, datatype=XSD.gYear) ) )
                 else:
                     gWorks.add( (URIRef(work_uri), DCTERMS.created, Literal(work_date) ) )
 
