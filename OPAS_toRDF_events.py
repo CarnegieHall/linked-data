@@ -95,11 +95,7 @@ with open(filePath_1, 'rU') as f1:
             gVenues.add( (URIRef(venue_uri), geonames.parentFeature, ch ) )
             gVenues.add( (URIRef(venue_uri), geonames.historicalName, Literal('Carnegie Hall Playhouse', lang='en') ) )
 
-        venueDict[str(venue_id)] = {}
-        venueDict[str(venue_id)]['label'] = venue_name
-        venueDict[str(venue_id)]['uri'] = venue_uri
-        venueDict[str(venue_id)]['code'] = venue_code
-        venueDict[str(venue_id)]['notes'] = venue_notes
+        venueDict[str(venue_id)] = venue_uri
 
 with open(filePath_2, 'rU') as f2:
     entities = json.load(f2)
