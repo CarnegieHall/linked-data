@@ -27,6 +27,17 @@ import sys
 utc = pytz.timezone("UTC")
 eastern = timezone('US/Eastern')
 
+class Event(object):
+
+	def __init__(self, date, time):
+		self.date = date
+		self.time = time
+	def create_event_dateTime(self):
+		dateTimeString = ' '.join([date, time])
+		isoDateTime = eastern.localize(
+                    dt.datetime.strptime(dateTimeString,'%m/%d/%Y %I:%M %p')).isoformat()
+		return isoDateTime
+
 venueDict = {}
 eventDict = {}
 
@@ -111,17 +122,11 @@ with open(filePath_2, 'rU') as f2:
             events = csv.reader(csvfile, dialect='excel', delimiter=',', quotechar='"')
             for row in events:
                 event_id = row[0]
-                opasDate = row[1].lstrip('0')
+                date = row[1].lstrip('0')
                 time = row[2]
-                dateTimeString = ''.join([opasDate, ' ', time])
-                isoDateTime = eastern.localize(dt.datetime.strptime(dateTimeString,'%m/%d/%Y %I:%M %p')).isoformat()
                 venue_id = row[3]
-                venue_uri = venueDict[str(venue_id)]['uri']
-                venue_code = venueDict[str(venue_id)]['code']
-                seq = (venue_code, isoDateTime)
-                event_string = ' '.join(seq)
-                event_string = re.sub('\s+', '_', ''.join(ch for ch in event_string if ch not in (':', '-')))
-                event_uri = chevents[event_string]
+                venue_uri = venueDict[str(venue_id)]
+                event_uri = chevents[str(event_id)]
                 event_title = row[4]
 
                 orchestra_id = row[5]
@@ -137,6 +142,9 @@ with open(filePath_2, 'rU') as f2:
                 work_id = row[7]
                 soloist_id = row[8]
                 work_order = row[9]
+
+                new_event = Event(date, time)
+                isoDateTime = new_event.create_event_dateTime()
 
                 if event_id not in idList:
                     idList.append(event_id)
@@ -162,13 +170,9 @@ with open(filePath_2, 'rU') as f2:
                     work_perfDict['soloists'] = soloist_idList
                     work_perfDict['order'] = work_order
 
-##                    programList = [work_perfDict]
-##                    work_orderList = [work_orderDict]
 
                     eventDict[str(event_id)] = {}
                     eventDict[str(event_id)]['isoDateTime'] = isoDateTime
-                    eventDict[str(event_id)]['date'] = opasDate
-                    eventDict[str(event_id)]['time'] = time
                     eventDict[str(event_id)]['venue id'] = venue_id
                     eventDict[str(event_id)]['title'] = event_title
                     eventDict[str(event_id)]['orchestra id'] = orchestra_id
