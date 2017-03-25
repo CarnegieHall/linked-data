@@ -46,6 +46,7 @@ gVenues = Graph()
 
 chvenues = Namespace('http://data.carnegiehall.org/venues/')
 chevents = Namespace('http://data.carnegiehall.org/events/')
+ecrm = Namespace('http://erlangen-crm.org/160714/')
 geonames = Namespace('http://www.geonames.org/ontology#')
 event = Namespace('http://purl.org/NET/c4dm/event.owl#')
 mo = Namespace ('http://purl.org/ontology/mo/')
@@ -150,6 +151,7 @@ with open(filePath_2, 'rU') as f2:
                     idList.append(event_id)
 
                     gEvents.add( (URIRef(event_uri), RDF.type, event.Event) )
+                    gEvents.add( (URIRef(event_uri), RDF.type, ecrm.E7_Activity) )
                     gEvents.add( (URIRef(event_uri), RDFS.label, Literal(event_title, lang='en') ) )
                     gEvents.add( (URIRef(event_uri), DCTERMS.date, Literal(isoDateTime, datatype=XSD.dateTime) ) )
                     gEvents.add( (URIRef(event_uri), event.place, URIRef(venue_uri)) )
