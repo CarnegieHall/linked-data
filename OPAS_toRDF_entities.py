@@ -50,7 +50,6 @@ countryDict = {}
 instrumentDict = {}
 entityDict = {}
 
-gPlaces = Graph()
 gInstruments = Graph()
 gEntities = Graph()
 
@@ -72,10 +71,8 @@ with open(filePath_1, 'rU') as f1:
         country_id = row[0]
         label = row[1]
         uri = row[2]
-
-        # gPlaces.add( (URIRef(uri), RDFS.label, Literal(label) ) )
-
-        countryDict[str(country_id)] = {}
+	
+	countryDict[str(country_id)] = {}
         countryDict[str(country_id)]['label'] = label
         countryDict[str(country_id)]['lat'] = ''
         countryDict[str(country_id)]['long'] = ''
@@ -449,7 +446,6 @@ for key in entityDict:
 country_dict_path = os.path.join(os.path.dirname(__file__), os.pardir, 'JSON_dicts', 'countryDict.json')
 instrument_dict_path = os.path.join(os.path.dirname(__file__), os.pardir, 'JSON_dicts', 'instrumentDict.json')
 entity_dict_path = os.path.join(os.path.dirname(__file__), os.pardir, 'JSON_dicts', 'entityDict.json')
-# places_graph_path = os.path.join(os.path.dirname(__file__), os.pardir, 'Graphs', 'placesGraph.nt')
 instruments_graph_path = os.path.join(os.path.dirname(__file__), os.pardir, 'Graphs', 'instrumentGraph.nt')
 entity_graph_path = os.path.join(os.path.dirname(__file__), os.pardir, 'Graphs', 'entityGraph.nt')
 
@@ -465,7 +461,6 @@ gEntities.bind("rdfs", RDFS)
 gEntities.bind("schema", schema)
 gEntities.bind("skos", SKOS)
 
-# gPlaces = gPlaces.serialize(destination=places_graph_path, format='nt')
 gInstruments = gInstruments.serialize(destination=instruments_graph_path, format='nt')
 gEntities = gEntities.serialize(destination=entity_graph_path, format='nt')
 
