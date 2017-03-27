@@ -6,13 +6,10 @@
 ## Argument[1] is path to Venues CSV
 ## Argument[2] is path to entityDict
 ## Argument[3] is path to worksDict
-## Argument[4] is path to 1st Events CSV
-## Argument[5] is path to 2nd Events CSV
-## Argument[6] is path to 3rd Events CSV, etc. - can continue adding CSV files as needed
+## Argument[4] is path to Events CSV -- if more CSVs needed, add as additional args
 
 import csv
 import json
-##from datetime import datetime
 import datetime as dt
 from pytz import timezone
 import pytz
@@ -208,7 +205,7 @@ with open(filePath_3, 'rU') as f3:
     for key in eventDict:
         event_uri = eventDict[key]['uri']
         for item in eventDict[key].keys():
-            if item.isdigit():
+            if (item.isdigit() and item != '0'):
                 programOrder = eventDict[key][str(item)]['order']
                 work_performance = URIRef(value=''.join([event_uri, '/work_', str(programOrder).zfill(2)]))
                 soloists = eventDict[key][str(item)]['soloists']
