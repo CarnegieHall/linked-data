@@ -71,8 +71,8 @@ with open(filePath_1, 'rU') as f1:
         country_id = row[0]
         label = row[1]
         uri = row[2]
-	
-	countryDict[str(country_id)] = {}
+
+        countryDict[str(country_id)] = {}
         countryDict[str(country_id)]['label'] = label
         countryDict[str(country_id)]['lat'] = ''
         countryDict[str(country_id)]['long'] = ''
@@ -391,57 +391,64 @@ with open(filePath_3, 'rU') as f3:
 ## for linked entities, these are not added to graph until full entityDict has been created
 for key in entityDict:
     entityURI = entityDict[str(key)]['uri']
+    composer_id = entityDict[str(key)]['composer id']
+    instrument = entityDict[str(key)]['instrument']
     groupList = entityDict[str(key)]['group uri']
     birthDate = entityDict[str(key)]['birth date']
     deathDate = entityDict[str(key)]['death date']
-    if birthDate != 'unknown':
-        if len(birthDate) == 10:
-            gEntities.add(
-                (URIRef(entityURI), schema.birthDate, Literal(birthDate, datatype=XSD.date)) )
-        elif len(birthDate) == 7:
-            gEntities.add(
-                (URIRef(entityURI), schema.birthDate, Literal(birthDate, datatype=XSD.gYearMonth)) )
-        elif len(birthDate) == 4:
-            gEntities.add(
-                (URIRef(entityURI), schema.birthDate, Literal(birthDate, datatype=XSD.gYear)) )
-    if deathDate != 'unknown':
-        if len(deathDate) == 10:
-            gEntities.add(
-                (URIRef(entityURI), schema.deathDate, Literal(deathDate, datatype=XSD.date)) )
-        elif len(deathDate) == 7:
-            gEntities.add(
-                (URIRef(entityURI), schema.deathDate, Literal(deathDate, datatype=XSD.gYearMonth)) )
-        elif len(deathDate) == 4:
-            gEntities.add(
-                (URIRef(entityURI), schema.deathDate, Literal(deathDate, datatype=XSD.gYear)) )
 
-    dbpedia = entityDict[str(key)]['dbpedia']
-    if dbpedia:
-        if 'subject' in groupList:
-                gEntities.add( (URIRef(entityURI), SKOS.closeMatch, URIRef(dbpedia)) )
-        else:
-                gEntities.add( (URIRef(entityURI), OWL.sameAs, URIRef(dbpedia)) )
-
-    lcnaf = entityDict[str(key)]['lcnaf']
-    if lcnaf:
-        if 'subject' in groupList:
-                gEntities.add( (URIRef(entityURI), SKOS.closeMatch, URIRef(lcnaf)) )
-        else:
-                gEntities.add( (URIRef(entityURI), OWL.sameAs, URIRef(lcnaf)) )
-
-    mbz = entityDict[str(key)]['mbz']
-    if mbz:
-        gEntities.add( (URIRef(entityURI), OWL.sameAs, URIRef(mbz)) )
-
-    geobirth = entityDict[str(key)]['geobirth']
-    birthCountry_id = entityDict[str(key)]['birth country id']
-    if geobirth:
-        gEntities.add( (URIRef(entityURI), dbp.birthPlace, URIRef(geobirth)) )
+    if (not composer_id and not instrument):
+            if int(key) < 1000000:
+                    continue
     else:
-        if birthCountry_id != '0':
-            geobirth = countryDict[str(birthCountry_id)]['uri']
-            entityDict[str(key)]['geobirth'] = geobirth
-            gEntities.add( (URIRef(entityURI), dbp.birthPlace, URIRef(geobirth)) )
+        if birthDate != 'unknown':
+                if len(birthDate) == 10:
+                        gEntities.add(
+                                (URIRef(entityURI), schema.birthDate, Literal(birthDate, datatype=XSD.date)) )
+                elif len(birthDate) == 7:
+                        gEntities.add(
+                                (URIRef(entityURI), schema.birthDate, Literal(birthDate, datatype=XSD.gYearMonth)) )
+                elif len(birthDate) == 4:
+                        gEntities.add(
+                                (URIRef(entityURI), schema.birthDate, Literal(birthDate, datatype=XSD.gYear)) )
+        if deathDate != 'unknown':
+                if len(deathDate) == 10:
+                        gEntities.add(
+                                (URIRef(entityURI), schema.deathDate, Literal(deathDate, datatype=XSD.date)) )
+                elif len(deathDate) == 7:
+                        gEntities.add(
+                                (URIRef(entityURI), schema.deathDate, Literal(deathDate, datatype=XSD.gYearMonth)) )
+                elif len(deathDate) == 4:
+                        gEntities.add(
+                                (URIRef(entityURI), schema.deathDate, Literal(deathDate, datatype=XSD.gYear)) )
+
+        dbpedia = entityDict[str(key)]['dbpedia']
+        if dbpedia:
+                if 'subject' in groupList:
+                                gEntities.add( (URIRef(entityURI), SKOS.closeMatch, URIRef(dbpedia)) )
+                else:
+                                gEntities.add( (URIRef(entityURI), OWL.sameAs, URIRef(dbpedia)) )
+
+        lcnaf = entityDict[str(key)]['lcnaf']
+        if lcnaf:
+                if 'subject' in groupList:
+                                gEntities.add( (URIRef(entityURI), SKOS.closeMatch, URIRef(lcnaf)) )
+                else:
+                                gEntities.add( (URIRef(entityURI), OWL.sameAs, URIRef(lcnaf)) )
+
+        mbz = entityDict[str(key)]['mbz']
+        if mbz:
+                gEntities.add( (URIRef(entityURI), OWL.sameAs, URIRef(mbz)) )
+
+        geobirth = entityDict[str(key)]['geobirth']
+        birthCountry_id = entityDict[str(key)]['birth country id']
+        if geobirth:
+                gEntities.add( (URIRef(entityURI), dbp.birthPlace, URIRef(geobirth)) )
+        else:
+                if birthCountry_id != '0':
+                        geobirth = countryDict[str(birthCountry_id)]['uri']
+                        entityDict[str(key)]['geobirth'] = geobirth
+                        gEntities.add( (URIRef(entityURI), dbp.birthPlace, URIRef(geobirth)) )
 
 country_dict_path = os.path.join(os.path.dirname(__file__), os.pardir, 'JSON_dicts', 'countryDict.json')
 instrument_dict_path = os.path.join(os.path.dirname(__file__), os.pardir, 'JSON_dicts', 'instrumentDict.json')
