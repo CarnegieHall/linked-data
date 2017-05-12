@@ -34,23 +34,23 @@ with open(filePath_1, 'rU') as f1:
 
             for tag in soup.find_all("name"):
                 name = tag.text
-                gPlaces.add( (URIRef(uri), RDFS.label, Literal(name)) )
+                gPlaces.add( (URIRef(geobirth), RDFS.label, Literal(name)) )
 
             for tag in soup.find_all("parentADM1"):
                 state = tag.attrs['rdf:resource']
-                gPlaces.add( (URIRef(uri), gn.parentADM1, URIRef(state) ) )
+                gPlaces.add( (URIRef(geobirth), gn.parentADM1, URIRef(state) ) )
 
             for tag in soup.find_all("parentCountry"):
                 country = tag.attrs['rdf:resource']
-                gPlaces.add( (URIRef(uri), gn.parentCountry, URIRef(country) ) )
+                gPlaces.add( (URIRef(geobirth), gn.parentCountry, URIRef(country) ) )
 
             for tag in soup.find_all("lat"):
                 lat = tag.text
-                gPlaces.add( (URIRef(uri), wgs84_pos.lat, Literal(lat)) )
+                gPlaces.add( (URIRef(geobirth), wgs84_pos.lat, Literal(lat)) )
 
             for tag in soup.find_all("long"):
                 long = tag.text
-                gPlaces.add( (URIRef(uri), wgs84_pos.long, Literal(long)) )
+                gPlaces.add( (URIRef(geobirth), wgs84_pos.long, Literal(long)) )
 
 places_graph_path = os.path.join(os.path.dirname(__file__), os.pardir, 'Graphs', 'placesGraph_test.nt')
 
