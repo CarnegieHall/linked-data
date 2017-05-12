@@ -36,10 +36,6 @@ with open(filePath_1, 'rU') as f1:
                 name = tag.text
                 gPlaces.add( (URIRef(geobirth), RDFS.label, Literal(name)) )
 
-            for tag in soup.find_all("parentADM1"):
-                state = tag.attrs['rdf:resource']
-                gPlaces.add( (URIRef(geobirth), gn.parentADM1, URIRef(state) ) )
-
             for tag in soup.find_all("parentCountry"):
                 country = tag.attrs['rdf:resource']
                 gPlaces.add( (URIRef(geobirth), gn.parentCountry, URIRef(country) ) )
