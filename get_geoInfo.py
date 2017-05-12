@@ -29,7 +29,7 @@ with open(filePath_1, 'rU') as f1:
             uri = ''.join([geobirth, 'about.rdf'])
             h = httplib2.Http()
             resp, rdf_doc = h.request(uri, "GET")
-            time.sleep(1.5)
+            time.sleep(1)
             soup = BeautifulSoup(rdf_doc, "xml")
 
             for tag in soup.find_all("name"):
