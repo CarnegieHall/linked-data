@@ -25,15 +25,15 @@ with open(filePath_1, 'rU') as f1:
 
         for tag in soup.find_all("lat"):
             lat = tag.text
-            countries[country]['lat'] = lat
+            countries[str(country)]['lat'] = lat
 
         for tag in soup.find_all("long"):
             long = tag.text
-            countries[country]['long'] = long
+            countries[str(country)]['long'] = long
 
 country_dict_path = os.path.join(os.path.dirname(__file__), os.pardir, 'JSON_dicts', 'countryDict.json')
 
 with open(country_dict_path, 'w') as f2:
-    json.dump(countryDict, f2)
+    json.dump(countries, f2)
 
 print('Finished getting country info')
