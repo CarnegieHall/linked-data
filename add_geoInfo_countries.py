@@ -3,8 +3,10 @@
 # ----For the full license terms, please visit https://github.com/CarnegieHall/linked-data/blob/master/LICENSE----
 
 ## Argument[0] is script to run
-## Argument[1] is path to graph
+## Argument[1] is path to countryDict
+## Argument[2] is path to placesGraph
 
+import json
 import os
 import rdflib
 from rdflib import Graph
@@ -21,29 +23,28 @@ geonames = Namespace('http://sws.geonames.org/')
 wgs84_pos = Namespace('http://www.w3.org/2003/01/geo/wgs84_pos#')
 
 filePath_1 = sys.argv[1]
-fileName = fetch_name(filePath_1)
+filePath_2 = sys.argv[2]
+fileName = fetch_name(filePath_2)
 
 g = Graph()
 
-g.parse(filePath_1, format='nt')
+g.parse(filePath_2, format='nt')
 
-for place in countryDict:
-    uri = place
-    name = countryDict[place]['label']
-    lat = countryDict[place]['lat']
-    long = countryDict[place]['long']
+with open(filePath_1, 'rU') as f1:
+    countries = json.load(f1)
+    for country in countries:
+        uri = countries[country]['uri']
+        name = countries[country]['label']
 
-    gPlaces.add( (URIRef(uri), RDFS.label, Literal(name)) )
-    gPlaces.add( (URIRef(uri), wgs84_pos.lat, Literal(lat)) )
-    gPlaces.add( (URIRef(uri), wgs84_pos.long, Literal(long)) )
+        g.add( (URIRef(uri), RDFS.label, Literal(name)) )
 
 graph_path = os.path.join(
     os.path.dirname(__file__), os.pardir, 'Graphs', (fileName + '.nt'))
 
 g.bind("geonames", geonames)
-gPlaces.bind("wgs84_pos", wgs84_pos)
+g.bind("wgs84_pos", wgs84_pos)
 g.bind("rdfs", RDFS)
 
 g.serialize(destination=graph_path,format='nt')
 
-print('Finished adding country labels to graph')
+print('Finished adding country info to placesGraph')
