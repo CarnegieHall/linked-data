@@ -48,7 +48,8 @@ with open(filePath_1, 'rU') as f1:
                 long = tag.text
                 gPlaces.add( (URIRef(geobirth), wgs84_pos.long, Literal(long)) )
 
-places_graph_path = os.path.join(os.path.dirname(__file__), os.pardir, 'Graphs', 'placesGraph_test.nt')
+places_graph_path = os.path.join(
+    os.path.dirname(__file__), os.pardir, 'Graphs', 'placesGraph.nt')
 
 gPlaces.bind("gn", gn)
 gPlaces.bind("rdfs", RDFS)
