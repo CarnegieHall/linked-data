@@ -1,4 +1,6 @@
-# !/usr/local/bin/python3.4
+# !/usr/local/bin/python3.4.2
+# ----Copyright (c) 2017 Carnegie Hall | The MIT License (MIT)----
+# ----For the full license terms, please visit https://github.com/CarnegieHall/linked-data/blob/master/LICENSE----
 
 ## Argument[0] is script to run
 ## Argument[1] is path to entityDict
