@@ -55,6 +55,7 @@ gEntities = Graph()
 
 chinstruments = Namespace('http://data.carnegiehall.org/instruments/')
 chnames = Namespace('http://data.carnegiehall.org/names/')
+chroles = Namespace('http://data.carnegiehall.org/roles/')
 dbp = Namespace('http://dbpedia.org/ontology/')
 gndo = Namespace('http://d-nb.info/standards/elementset/gnd#')
 mbz = Namespace('https://musicbrainz.org/artist/')
@@ -83,12 +84,16 @@ with open(filePath_2, 'rU') as f2:
     p = re.compile(r'^http://')
     for row in instruments:
         instrument_id = row[0]
-        instrument_uri = chinstruments[str(instrument_id)]
         name = row[1]
         type_indicator = row[2]
         sameAs_uri = row[3]
         predicate = row[4]
         section_id = row[5]
+
+        if predicate == "http://d-nb.info/standards/elementset/gnd#professionOrOccupation":
+                instrument_uri = chroles[str(instrument_id)]
+        else:
+                instrument_uri = chinstruments[str(instrument_id)]
 
         gInstruments.add( (URIRef(instrument_uri), RDFS.label, Literal(name) ) )
 
@@ -185,6 +190,8 @@ for item in sys.argv[4:]:
                                 (URIRef(performer_uri), RDF.type, dbp.animal) )
                             gEntities.add(
                                 (URIRef(performer_uri), RDFS.label, Literal(fullName)) )
+                            gEntities.add(
+                                (URIRef(performer_uri), URIRef(instrument_predicate), URIRef(instrument_uri)) )
                             foafClass = 'Agent'
 
                 dbpedia = row[13]
