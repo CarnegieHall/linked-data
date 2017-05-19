@@ -130,12 +130,12 @@ with open(filePath_2, 'rU') as f3:
             genre_code = row[10]
 
             gWorks.add( (URIRef(work_uri), RDFS.label, Literal(work.title.encode('utf-8')) ) )
+            gWorks.add( (URIRef(work_uri), DCTERMS.creator, URIRef(composer_uri) ) )
 
             if genre_code != 'non-musical':
                 gWorks.add( (URIRef(work_uri), RDF.type, mo.MusicalWork ) )
                 gWorks.add( (URIRef(work_uri), RDF.type, gndo.MusicalWork ) )
                 gWorks.add( (URIRef(work_uri), RDF.type, schema.MusicComposition ) )
-                gWorks.add( (URIRef(work_uri), DCTERMS.creator, URIRef(composer_uri) ) )
             else:
                 gWorks.add( (URIRef(work_uri), RDF.type, gndo.Work ) )
                 gWorks.add( (URIRef(work_uri), RDF.type, schema.CreativeWork ) )
