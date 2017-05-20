@@ -102,10 +102,6 @@ with open(filePath_2, 'rU') as f2:
 
         gInstruments.add( (URIRef(instrument_uri), RDFS.label, Literal(name) ) )
 
-        match = p.findall(sameAs_uri)
-        if type_indicator == 'IND':
-            gInstruments.add( (URIRef(instrument_uri), RDF.type, mo.Instrument) )
-
         instrumentDict[str(instrument_id)] = {}
         instrumentDict[str(instrument_id)]['label'] = name
         instrumentDict[str(instrument_id)]['typeIndicator'] = type_indicator
