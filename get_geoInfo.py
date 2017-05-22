@@ -3,7 +3,7 @@
 # ----For the full license terms, please visit https://github.com/CarnegieHall/linked-data/blob/master/LICENSE----
 
 ## Argument[0] is script to run
-## Argument[1] is path to entityDict
+## Argument[1] is path to places csv
 
 import csv
 import httplib2
