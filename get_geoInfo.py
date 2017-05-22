@@ -5,8 +5,8 @@
 ## Argument[0] is script to run
 ## Argument[1] is path to entityDict
 
+import csv
 import httplib2
-import json
 import lxml
 import os
 import re
@@ -24,31 +24,30 @@ wgs84_pos = Namespace('http://www.w3.org/2003/01/geo/wgs84_pos#')
 filePath_1 = sys.argv[1]
 
 with open(filePath_1, 'rU') as f1:
-    entities = json.load(f1)
-    for entity in entities:
-        geobirth = entities[entity]['geobirth']
-        if geobirth:
-            uri = ''.join([geobirth, 'about.rdf'])
-            h = httplib2.Http()
-            resp, rdf_doc = h.request(uri, "GET")
-            time.sleep(1)
-            soup = BeautifulSoup(rdf_doc, "xml")
+    geoURIs = csv.reader(f1, dialect='excel', delimiter=',', quotechar='"')
+    for item in geoURIs:
+        geoURI = item[0]
+        uri = ''.join([geoURI, 'about.rdf'])
+        h = httplib2.Http()
+        resp, rdf_doc = h.request(uri, "GET")
+        time.sleep(1)
+        soup = BeautifulSoup(rdf_doc, "xml")
 
-            for tag in soup.find_all("name"):
-                name = tag.text
-                gPlaces.add( (URIRef(geobirth), RDFS.label, Literal(name)) )
+        for tag in soup.find_all("name"):
+            name = tag.text
+            gPlaces.add( (URIRef(geoURI), RDFS.label, Literal(name)) )
 
-            for tag in soup.find_all("parentCountry"):
-                country = tag.attrs['rdf:resource']
-                gPlaces.add( (URIRef(geobirth), gn.parentCountry, URIRef(country) ) )
+        for tag in soup.find_all("parentCountry"):
+            country = tag.attrs['rdf:resource']
+            gPlaces.add( (URIRef(geoURI), gn.parentCountry, URIRef(country) ) )
 
-            for tag in soup.find_all("lat"):
-                lat = tag.text
-                gPlaces.add( (URIRef(geobirth), wgs84_pos.lat, Literal(lat)) )
+        for tag in soup.find_all("lat"):
+            lat = tag.text
+            gPlaces.add( (URIRef(geoURI), wgs84_pos.lat, Literal(lat)) )
 
-            for tag in soup.find_all("long"):
-                long = tag.text
-                gPlaces.add( (URIRef(geobirth), wgs84_pos.long, Literal(long)) )
+        for tag in soup.find_all("long"):
+            long = tag.text
+            gPlaces.add( (URIRef(geoURI), wgs84_pos.long, Literal(long)) )
 
 places_graph_path = os.path.join(
     os.path.dirname(__file__), os.pardir, 'Graphs', 'placesGraph.nt')
