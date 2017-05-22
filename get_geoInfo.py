@@ -9,7 +9,6 @@ import csv
 import httplib2
 import lxml
 import os
-import re
 import sys
 import time
 from bs4 import BeautifulSoup
