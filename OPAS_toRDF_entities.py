@@ -46,6 +46,7 @@ class Entity(object):
 			lifeDates.append(lifeDate)
 		return lifeDates
 
+placesList = []
 countryDict = {}
 instrumentDict = {}
 entityDict = {}
@@ -73,12 +74,10 @@ with open(filePath_1, 'rU') as f1:
         country_id = row[0]
         label = row[1]
         uri = row[2]
-
-        countryDict[str(country_id)] = {}
-        countryDict[str(country_id)]['label'] = label
-        countryDict[str(country_id)]['lat'] = ''
-        countryDict[str(country_id)]['long'] = ''
-        countryDict[str(country_id)]['uri'] = uri
+        
+        if uri not in placesList:
+                placesList.append(uri)
+        countryDict[str(country_id)] = uri
 
 with open(filePath_2, 'rU') as f2:
     instruments = csv.reader(f2, dialect='excel', delimiter=',', quotechar='"')
@@ -451,10 +450,12 @@ for key in entityDict:
         geobirth = entityDict[str(key)]['geobirth']
         birthCountry_id = entityDict[str(key)]['birth country id']
         if geobirth:
+                if geobirth not in placesList:
+                        placesList.append(geobirth)
                 gEntities.add( (URIRef(entityURI), dbp.birthPlace, URIRef(geobirth)) )
         else:
                 if birthCountry_id != '0':
-                        geobirth = countryDict[str(birthCountry_id)]['uri']
+                        geobirth = countryDict[str(birthCountry_id)]
                         entityDict[str(key)]['geobirth'] = geobirth
                         gEntities.add( (URIRef(entityURI), dbp.birthPlace, URIRef(geobirth)) )
 
@@ -463,6 +464,7 @@ instrument_dict_path = os.path.join(os.path.dirname(__file__), os.pardir, 'JSON_
 entity_dict_path = os.path.join(os.path.dirname(__file__), os.pardir, 'JSON_dicts', 'entityDict.json')
 instruments_graph_path = os.path.join(os.path.dirname(__file__), os.pardir, 'Graphs', 'instrumentGraph.nt')
 entity_graph_path = os.path.join(os.path.dirname(__file__), os.pardir, 'Graphs', 'entityGraph.nt')
+placesList_path = os.path.join(os.path.dirname(__file__), os.pardir, 'sourceFiles', 'places.csv')
 
 gInstruments.bind("rdfs", RDFS)
 gInstruments.bind("rdf", RDF)
@@ -487,5 +489,10 @@ with open(instrument_dict_path, 'w') as f2:
 
 with open(entity_dict_path, 'w') as f3:
     json.dump(entityDict, f3)
+
+with open(placesList_path, 'w', newline='') as f4:
+        a = csv.writer(f4, dialect='excel', delimiter=',')
+        for item in placesList:
+                a.writerow([item])
 
 print("Finished processing Entities")
