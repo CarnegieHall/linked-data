@@ -9,8 +9,8 @@
 import csv
 import json
 import rdflib
-from rdflib import Graph, Literal, Namespace, OWL, RDF, URIRef, XSD
-from rdflib.namespace import DCTERMS, OWL, RDF, RDFS
+from rdflib import Graph, Literal, Namespace, RDF, SKOS, URIRef, XSD
+from rdflib.namespace import DCTERMS, RDF, RDFS, SKOS
 from rdflib.plugins.serializers.nt import NTSerializer
 import os
 import sys
@@ -189,11 +189,11 @@ for key in worksDict:
     mbz_link = worksDict[key]['mbz']
 
     if dbpedia_link:
-        gWorks.add( (URIRef(work_uri), OWL.sameAs, URIRef(dbpedia_link)) )
+        gWorks.add( (URIRef(work_uri), SKOS.exactMatch, URIRef(dbpedia_link)) )
     if lcnaf_link:
-        gWorks.add( (URIRef(work_uri), OWL.sameAs, URIRef(lcnaf_link)) )
+        gWorks.add( (URIRef(work_uri), SKOS.exactMatch, URIRef(lcnaf_link)) )
     if mbz_link:
-        gWorks.add( (URIRef(work_uri), OWL.sameAs, URIRef(mbz_link)) )
+        gWorks.add( (URIRef(work_uri), SKOS.exactMatch, URIRef(mbz_link)) )
 
 
 works_dict_path = os.path.join(os.path.dirname(__file__), os.pardir, 'JSON_dicts', 'worksDict.json')
@@ -206,6 +206,7 @@ gWorks.bind("mo", mo)
 gWorks.bind("rdf", RDF)
 gWorks.bind("rdfs", RDFS)
 gWorks.bind("schema", schema)
+gWorks.bind("skos", SKOS)
 
 gWorks = gWorks.serialize(destination=works_graph_path, format='nt')
 
