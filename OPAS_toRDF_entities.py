@@ -434,18 +434,18 @@ for key in entityDict:
                 if 'subject' in groupList:
                                 gEntities.add( (URIRef(entityURI), SKOS.closeMatch, URIRef(dbpedia)) )
                 else:
-                                gEntities.add( (URIRef(entityURI), OWL.sameAs, URIRef(dbpedia)) )
+                                gEntities.add( (URIRef(entityURI), SKOS.exactMatch, URIRef(dbpedia)) )
 
         lcnaf = entityDict[str(key)]['lcnaf']
         if lcnaf:
                 if 'subject' in groupList:
                                 gEntities.add( (URIRef(entityURI), SKOS.closeMatch, URIRef(lcnaf)) )
                 else:
-                                gEntities.add( (URIRef(entityURI), OWL.sameAs, URIRef(lcnaf)) )
+                                gEntities.add( (URIRef(entityURI), SKOS.exactMatch, URIRef(lcnaf)) )
 
         mbz = entityDict[str(key)]['mbz']
         if mbz:
-                gEntities.add( (URIRef(entityURI), OWL.sameAs, URIRef(mbz)) )
+                gEntities.add( (URIRef(entityURI), SKOS.exactMatch, URIRef(mbz)) )
 
         geobirth = entityDict[str(key)]['geobirth']
         birthCountry_id = entityDict[str(key)]['birth country id']
@@ -468,7 +468,6 @@ placesList_path = os.path.join(os.path.dirname(__file__), os.pardir, 'sourceFile
 
 gInstruments.bind("rdfs", RDFS)
 gInstruments.bind("rdf", RDF)
-gInstruments.bind("owl", OWL)
 gEntities.bind("dbpedia-owl", dbp)
 gEntities.bind("foaf", FOAF)
 gEntities.bind("gndo", gndo)
