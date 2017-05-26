@@ -14,8 +14,8 @@ import datetime as dt
 from pytz import timezone
 import pytz
 import rdflib
-from rdflib import Graph, Literal, Namespace, OWL, RDF, URIRef, XSD
-from rdflib.namespace import DCTERMS, OWL, RDF, RDFS
+from rdflib import Graph, Literal, Namespace, RDF, SKOS, URIRef, XSD
+from rdflib.namespace import DCTERMS, RDF, RDFS, SKOS
 from rdflib.plugins.serializers.nt import NTSerializer
 import re
 import os
@@ -53,7 +53,7 @@ ch = chvenues['96397']
 geonamesCH = URIRef('http://sws.geonames.org/5111573/')
 geonames_chCinema = URIRef('http://sws.geonames.org/7255414/')
 
-gVenues.add( (ch, OWL.sameAs, geonamesCH))
+gVenues.add( (ch, SKOS.exactMatch, geonamesCH))
 gVenues.add( (ch, RDFS.label, Literal('Carnegie Hall', lang='en') ) )
 
 filePath_1 = sys.argv[1]
@@ -100,7 +100,7 @@ with open(filePath_1, 'rU') as f1:
             gVenues.add( (URIRef(venue_uri), geonames.historicalName, Literal(oldName, lang='en') ) )
 
         if venue_code == 'CIN':
-            gVenues.add( (URIRef(venue_uri), OWL.sameAs, geonames_chCinema))
+            gVenues.add( (URIRef(venue_uri), SKOS.exactMatch, geonames_chCinema))
             gVenues.add( (URIRef(venue_uri), geonames.parentFeature, ch ) )
             gVenues.add( (URIRef(venue_uri), geonames.historicalName, Literal('Carnegie Hall Playhouse', lang='en') ) )
 
@@ -232,7 +232,7 @@ venue_dict_path = os.path.join(os.path.dirname(__file__), os.pardir, 'JSON_dicts
 venue_graph_path = os.path.join(os.path.dirname(__file__), os.pardir, 'Graphs', 'venueGraph.nt')
 
 gVenues.bind("geonames", geonames)
-gVenues.bind("owl", OWL)
+gVenues.bind("skos", SKOS)
 gVenues.bind("rdfs", RDFS)
 
 gEvents.bind("chevents", chevents)
