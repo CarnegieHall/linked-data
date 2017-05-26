@@ -12,8 +12,8 @@ import csv
 import io
 import json
 import rdflib
-from rdflib import Graph, Literal, Namespace, RDF, SKOS, URIRef, XSD
-from rdflib.namespace import FOAF, RDF, RDFS, SKOS
+from rdflib import Graph, Literal, Namespace, URIRef
+from rdflib.namespace import FOAF, RDF, RDFS, SKOS, XSD
 from rdflib.plugins.serializers.nt import NTSerializer
 import re
 import os
