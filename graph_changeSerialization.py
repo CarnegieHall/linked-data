@@ -64,7 +64,7 @@ g.bind("mbz", mbz)
 g.bind("mo", mo)
 g.bind("rdf", RDF)
 g.bind("rdfs", RDFS)
-g.bind("owl", OWL)
+g.bind("skos", SKOS)
 g.bind("schema", schema)
 
 g.serialize(destination=graph_path,format=str(newSerialization))
