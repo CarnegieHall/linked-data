@@ -128,17 +128,20 @@ with open(filePath_2, 'rU') as f3:
                 linkDict[str(linkCode)] = link
 
             genre_code = row[10]
-
-            gWorks.add( (URIRef(work_uri), RDFS.label, Literal(work.title.encode('utf-8')) ) )
-            gWorks.add( (URIRef(work_uri), DCTERMS.creator, URIRef(composer_uri) ) )
-
-            if genre_code != 'non-musical':
+            
+            if genre_code not in ('non-musical', 'placeholder'):
                 gWorks.add( (URIRef(work_uri), RDF.type, mo.MusicalWork ) )
                 gWorks.add( (URIRef(work_uri), RDF.type, gndo.MusicalWork ) )
                 gWorks.add( (URIRef(work_uri), RDF.type, schema.MusicComposition ) )
-            else:
+                gWorks.add( (URIRef(work_uri), RDFS.label, Literal(work.title.encode('utf-8')) ) )
+                gWorks.add( (URIRef(work_uri), DCTERMS.creator, URIRef(composer_uri) ) )
+            elif genre_code == 'non-musical':
                 gWorks.add( (URIRef(work_uri), RDF.type, gndo.Work ) )
                 gWorks.add( (URIRef(work_uri), RDF.type, schema.CreativeWork ) )
+                gWorks.add( (URIRef(work_uri), RDFS.label, Literal(work.title.encode('utf-8')) ) )
+                gWorks.add( (URIRef(work_uri), DCTERMS.creator, URIRef(composer_uri) ) )
+            elif genre_code == 'placeholder':
+                gWorks.add( (URIRef(work_uri), RDFS.label, Literal(work.title.encode('utf-8')) ) )
             if work_date:
                 if len(work_date) == 4:
                     gWorks.add(
