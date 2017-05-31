@@ -14,8 +14,8 @@ import datetime as dt
 from pytz import timezone
 import pytz
 import rdflib
-from rdflib import Graph, Literal, Namespace, RDF, SKOS, URIRef, XSD
-from rdflib.namespace import DCTERMS, RDF, RDFS, SKOS
+from rdflib import Graph, Literal, Namespace, URIRef
+from rdflib.namespace import DCTERMS, RDF, RDFS, SKOS, XSD
 from rdflib.plugins.serializers.nt import NTSerializer
 import re
 import os
