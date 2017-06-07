@@ -54,6 +54,8 @@ ch = chvenues['96397']
 geonamesCH = URIRef('http://sws.geonames.org/5111573/')
 geonames_chCinema = URIRef('http://sws.geonames.org/7255414/')
 
+gVenues.add( (ch, RDF.type, schema.EventVenue ) )
+gVenues.add( (ch, RDF.type, dbo.ArchitecturalStructure ) )
 gVenues.add( (ch, SKOS.exactMatch, geonamesCH))
 gVenues.add( (ch, RDFS.label, Literal('Carnegie Hall', lang='en') ) )
 
