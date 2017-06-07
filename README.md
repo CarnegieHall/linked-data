@@ -15,7 +15,8 @@ The Carnegie Hall Archives maintains a database, the [Orchestra Planning and Adm
 | **[OPAS_toRDF_entities.py](https://github.com/CarnegieHall/linked-data/blob/master/OPAS_toRDF_entities.py)**     | Transforms OPAS data (Entities, i.e. performers, composers, etc.) from SQL into RDF data model |
 |**[OPAS_toRDF_works.py](https://github.com/CarnegieHall/linked-data/blob/master/OPAS_toRDF_events.py)**      | Transforms OPAS data (Creative works, i.e. musical compositions, dramatic works, etc.) from SQL into RDF data model |
 |**[OPAS_toRDF_events.py](https://github.com/CarnegieHall/linked-data/blob/master/OPAS_toRDF_works.py)** | Transforms OPAS data (Events, i.e. performances, lectures, etc.) from SQL into RDF data model |
-
+|**[get_geoInfo.py](https://github.com/CarnegieHall/linked-data/blob/master/get_geoInfo.py)** | Collects label, latitude/longitude coordinates, and parent country for each GeoNames location URI used in the CH dataset |
+|**[graph_changeSerialization.py](https://github.com/CarnegieHall/linked-data/blob/master/graph_changeSerialization.py)** |  Changes the serialization of an RDF graph based on input parameters (currently only set up to convert N-Triples to Turtle) |
 
 ## USAGE AND LICENSE
 ### USAGE GUIDELINES
