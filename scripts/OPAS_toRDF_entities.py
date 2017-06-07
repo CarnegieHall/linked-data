@@ -187,7 +187,7 @@ for item in sys.argv[4:]:
                             foafClass = 'Agent'
                         elif instrument_type == 'ANIMAL':
                             gEntities.add(
-                                (URIRef(performer_uri), RDF.type, dbp.animal) )
+                                (URIRef(performer_uri), RDF.type, dbo.animal) )
                             gEntities.add(
                                 (URIRef(performer_uri), RDFS.label, Literal(fullName)) )
                             gEntities.add(
@@ -452,12 +452,12 @@ for key in entityDict:
         if geobirth:
                 if geobirth not in placesList:
                         placesList.append(geobirth)
-                gEntities.add( (URIRef(entityURI), dbp.birthPlace, URIRef(geobirth)) )
+                gEntities.add( (URIRef(entityURI), dbo.birthPlace, URIRef(geobirth)) )
         else:
                 if birthCountry_id != '0':
                         geobirth = countryDict[str(birthCountry_id)]
                         entityDict[str(key)]['geobirth'] = geobirth
-                        gEntities.add( (URIRef(entityURI), dbp.birthPlace, URIRef(geobirth)) )
+                        gEntities.add( (URIRef(entityURI), dbo.birthPlace, URIRef(geobirth)) )
 
 country_dict_path = os.path.join(os.path.dirname(__file__), os.pardir, 'JSON_dicts', 'countryDict.json')
 instrument_dict_path = os.path.join(os.path.dirname(__file__), os.pardir, 'JSON_dicts', 'instrumentDict.json')
