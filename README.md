@@ -2,7 +2,9 @@
 
 ## OVERVIEW
 
-Carnegie Hall Archives is preparing the initial release of our performance history dataset. Keep an eye on this repo!
+**Carnegie Hall Archives is preparing the initial release of our performance history dataset. Keep an eye on this repo!**
+
+You can continue to access the Linked Data [scripts](/scripts/scripts-overview.md).
 
 ## USAGE AND LICENSE
 ### USAGE GUIDELINES
