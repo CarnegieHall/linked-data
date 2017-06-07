@@ -43,6 +43,7 @@ gVenues = Graph()
 
 chvenues = Namespace('http://data.carnegiehall.org/venues/')
 chevents = Namespace('http://data.carnegiehall.org/events/')
+dbo = Namespace('http://dbpedia.org/ontology/')
 ecrm = Namespace('http://erlangen-crm.org/160714/')
 geonames = Namespace('http://www.geonames.org/ontology#')
 event = Namespace('http://purl.org/NET/c4dm/event.owl#')
@@ -69,8 +70,11 @@ with open(filePath_1, 'rU') as f1:
         venue_name = row[2]
         venue_notes = row[3]
 
+        gVenues.add( (URIRef(venue_uri), RDF.type, schema.EventVenue) ) )
+        gVenues.add( (URIRef(venue_uri), RDF.type, dbo.Venue) ) )
         gVenues.add( (URIRef(venue_uri), RDFS.label, Literal(venue_name, lang='en') ) )
         gVenues.add( (URIRef(venue_uri), geonames.parentFeature, URIRef(ch) ) )
+        gVenues.add( (URIRef(ch), schema.containsPlace, URIRef(venue_uri) ) )
 
         if venue_notes:
             gVenues.add( (URIRef(venue_uri), RDFS.comment, Literal(venue_notes, lang='en') ) )
