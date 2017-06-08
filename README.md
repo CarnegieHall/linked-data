@@ -6,13 +6,28 @@
 
 You can continue to access the Linked Data [scripts](/scripts/scripts-overview.md).
 
+## CONTENTS
+
+## CARNEGIE HALL PERFORMANCE HISTORY AS LINKED OPEN DATA
+### What's Included
+### What's Not Included
+### Building LOD at Carnegie Hall
+
+## GET INVOLVED
+## Provide Feedback or Report Issues
+## Build Something & Share It
+
 ## USAGE AND LICENSE
 ### USAGE GUIDELINES
+#### DATA
+#### SCRIPTS
 This code is provided “as is” and for you to use at your own risk. The information included in the contents of this repository is not necessarily complete. Carnegie Hall offers the scripts as-is and makes no representations or warranties of any kind.
 
 We plan to update the scripts regularly. We welcome any [Issues](https://github.com/CarnegieHall/linked-data/issues) and other feedback. Please let us know if you have found the contents of this repository useful!
 
 ### LICENSE
+#### DATA
+#### SCRIPTS
 _The MIT License (MIT)_
 
 _Copyright (c) 2017 Carnegie Hall_
