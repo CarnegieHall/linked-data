@@ -45,10 +45,14 @@ Though the CH LOD includes about 3 million triples, there is still information m
 ## USAGE AND LICENSE
 ### USAGE GUIDELINES
 #### DATA
+Carnegie Hall offers the CH Performance History as Linked Open Data dataset as-is and makes no representations or warranties of any kind concerning the contents. Please see the data license statement below.
+
+If you have questions about the dataset or its usage, please submit a new ['Issue']() or email *archives at carnegiehall dot org*. 
+
 #### SCRIPTS
 This code is provided “as is” and for you to use at your own risk. The information included in the contents of this repository is not necessarily complete. Carnegie Hall offers the scripts as-is and makes no representations or warranties of any kind.
 
-We plan to update the scripts regularly. We welcome any [Issues](https://github.com/CarnegieHall/linked-data/issues) and other feedback. Please let us know if you have found the contents of this repository useful!
+We plan to update the scripts regularly. We welcome any [feedback](https://github.com/CarnegieHall/linked-data/issues). Please let us know if you have found the contents of this repository useful!
 
 ### LICENSES
 #### DATA LICENSE
