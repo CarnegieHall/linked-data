@@ -46,7 +46,7 @@ The separation of a work performance from the event enables us to demonstrate co
       - Works (musical and non-musical)
       - Performers 
 
-Interested in the **CH LOD data model, namespaces, URI schemas, vocabularies, and ontologies**? Check out CH's in-depth data structure and schema documentation [link] in this repository.
+Interested in the **CH LOD data model, namespaces, URI schemas, vocabularies, and ontologies**? Check out CH's in-depth [data structure and schema documentation](/data-structure.md) in this repository.
 
 ### Potential Future Work
 
