@@ -16,6 +16,7 @@ The Carnegie Hall Archives believes in showing its work. To that goal, this repo
 - Documentation about the [structure and content of the CH LOD]
 
 ## CARNEGIE HALL PERFORMANCE HISTORY AS LINKED OPEN DATA
+
 ### About the Dataset
 The initial release encompasses performance history data from 1891 through the end of the 2015-16 concert season (July 15, 2016). The Carnegie Hall Archives intends to release updated datasets at semi-regular (e.g. 3-6 month) intervals.
 
@@ -27,7 +28,26 @@ The Carnegie Hall Archives maintains a database, the [Orchestra Planning and A
 
 Starting in 2013, Carnegie Hall began publishing some of these records to the [Performance History Search](https://www.carnegiehall.org/PerformanceHistorySearch/). You can now find the records for more than 45,000 events from 1891 to the present. Data cleanup efforts are ongoing, and new records are published each month. The Carnegie Hall linked data prototype uses this published data set.
 
-#### (Structure ,etc)
+#### Data Structure
+
+How is CH's performance history represented as linked open data? Characteristics about CH performance events fall into two categories:
+1. Basic **information that applies to the entire event**.
+2. **Information that applies to each presentation of a work** during an event (a *work performance*). 
+
+Let's explore the event data structure further... 
+1. Each event has its own Uniform Resource Indentifier (URI) and includes metadata related to: 
+  - Date/Time (ISO 8601 date/time string) 
+  - Venue 
+  - Title (label) 
+  - Entities who participate in the entirety of the program, like a conductor and/or an orchestra.
+
+2. Components of an Event – e.g. each work performed – is a sub-event, with its own URI. Work performance metadata includes:
+  - Works (musical and non-musical)
+  - Performers 
+
+The separation of a work performance from the event enables us to demonstrate context. Statements link performers to a specific work performance, rather than generically to an entire event.
+
+Interested in the **CH LOD data model, namespaces, URI schemas, vocabularies, and ontlogoies**? Check out our in-depth data structure and schema documentation [link].
 
 ### Potential Future Work
 
@@ -36,6 +56,7 @@ Though the CH LOD includes about 3 million triples, there is still information m
 - Some past **performance records are missing**; such data will be added as it becomes available. 
 - **Complete, accurate biographical data is not always available** for performers and composers. To the extent that this information has been provided to Carnegie Hall or is available from published authority sources, it has been added to the dataset. Existing Carnegie Hall URIs will remain stable, but additional or revised statements (e.g. newly acquired birth/death dates, corrected spellings, etc.) may be added at any time. 
 - **Presenting organizations**, e.g. concert management and/or licensees who rented the Hall, are not included in the initial release
+- **Roles and instruments on a specific Work Performance** for an entity. We are working on a way to describe how a certain artist played an instrument/role during a work performance.
 - **Credited non-performing roles**, e.g. choral/ensemble preparation, technical roles, etc., are not included in the initial release
 
 ### Building LOD at Carnegie Hall
