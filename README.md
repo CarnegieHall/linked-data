@@ -14,8 +14,8 @@ You can continue to access the Linked Data [scripts](/scripts/scripts-overview.m
 ### Building LOD at Carnegie Hall
 
 ## GET INVOLVED
-## Provide Feedback or Report Issues
-## Build Something & Share It
+### Provide Feedback or Report Issues
+### Build Something & Share It
 
 ## USAGE AND LICENSE
 ### USAGE GUIDELINES
