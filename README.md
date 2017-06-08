@@ -1,8 +1,7 @@
 # linked-data
+# THIS IS A DRAFT! THIS IS A DRAFT! THIS IS A DRAFT! THIS IS A DRAFT! THIS IS A DRAFT! THIS IS A DRAFT! 
 
 ## OVERVIEW
-
-**Carnegie Hall Archives is preparing the initial release of our performance history dataset. Keep an eye on this repo!**
 
 The purpose of this repository is to share Carnegie Hall's performance history as linked open data, and resources related to its creation and maintenance. 
 
@@ -16,10 +15,17 @@ The Carnegie Hall Archives believes in showing its work. To that goal, this repo
 - An overview of [CH's performance history]
 - Documentation about the [structure and content of the CH LOD]
 
-
 ## CARNEGIE HALL PERFORMANCE HISTORY AS LINKED OPEN DATA
 ### About the Dataset
 The initial release encompasses performance history data from 1891 through the end of the 2015-16 concert season (July 15, 2016). The Carnegie Hall Archives intends to release updated datasets at semi-regular (e.g. 3-6 month) intervals.
+
+#### What Does "Performance History" Mean at CH?
+
+Since it opened in 1891, Carnegie Hall has been a center of cultural and political expression, holds multiple performance spaces, and we present and provide a venue for many different types of music and art. Since its transition to a not-for-profit institution in 1960, Carnegie Hall has continued to deepen its commitment to music education and community outreach and programming with concerts and events in neighborhoods throughout New York City, and the world.
+
+The Carnegie Hall Archives maintains a database, the [Orchestra Planning and Administration System (OPAS)](http://fineartssoftware.com/), with a goal to track every event – musical and nonmusical – that has occurred in the public performance spaces of CH since 1891. Since the CH Archives was not established until 1986, there are some gaps in these records, which we continue to fill in using sources like digitized newspaper listings and reviews, or missing concert programs we buy on eBay or are donated to us. This database now covers **more than 50,000 events across nearly all musical genres, as well as theatrical, dance and spoken word events, meetings, lectures, civic rallies, and political conventions**. Our database has corresponding records for more than 100,000 artists, 20,000 composers and over 85,000 musical works.
+
+Starting in 2013, Carnegie Hall began publishing some of these records to the [Performance History Search](https://www.carnegiehall.org/PerformanceHistorySearch/). You can now find the records for more than 45,000 events from 1891 to the present. Data cleanup efforts are ongoing, and new records are published each month. The Carnegie Hall linked data prototype uses this published data set.
 
 ### Out of Scope
 ### Building LOD at Carnegie Hall
