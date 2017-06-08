@@ -27,6 +27,8 @@ The Carnegie Hall Archives maintains a database, the [Orchestra Planning and A
 
 Starting in 2013, Carnegie Hall began publishing some of these records to the [Performance History Search](https://www.carnegiehall.org/PerformanceHistorySearch/). You can now find the records for more than 45,000 events from 1891 to the present. Data cleanup efforts are ongoing, and new records are published each month. The Carnegie Hall linked data prototype uses this published data set.
 
+#### (Structure ,etc)
+
 ### Potential Future Work
 
 Though the CH LOD includes about 3 million triples, there is still information missing from or out of scope of the initial release. Below is a sample of excluded content and topics. See how to [get involved] if you have feedback about the list of information not currently in the dataset.
@@ -37,6 +39,8 @@ Though the CH LOD includes about 3 million triples, there is still information m
 - **Credited non-performing roles**, e.g. choral/ensemble preparation, technical roles, etc., are not included in the initial release
 
 ### Building LOD at Carnegie Hall
+
+How did the Carnegie Hall Archives get from an internal database to 3 million triples containing open data from a dozen ontologies and vocabularies? 
 
 ## GET INVOLVED
 ### Provide Feedback or Report Issues
