@@ -4,13 +4,24 @@
 
 **Carnegie Hall Archives is preparing the initial release of our performance history dataset. Keep an eye on this repo!**
 
-You can continue to access the Linked Data [scripts](/scripts/scripts-overview.md).
+The purpose of this repository is to share Carnegie Hall's performance history as linked open data, and resources related to its creation and maintenance. 
+
+You can explore the Carnegie Hall (CH) performance history linked open data [here], and read more about it below.
 
 ## CONTENTS
 
+The Carnegie Hall Archives believes in showing its work. To that goal, this repository includes:
+- Link to explore the CH LOD via a SPARQL endpoint for querying, with option to download the entire dataset
+- [Python scripts](/scripts/scripts-overview.md) used to transform CSV to LOD serializations
+- An overview of [CH's performance history]
+- Documentation about the [structure and content of the CH LOD]
+
+
 ## CARNEGIE HALL PERFORMANCE HISTORY AS LINKED OPEN DATA
-### What's Included
-### What's Not Included
+### About the Dataset
+The initial release encompasses performance history data from 1891 through the end of the 2015-16 concert season (July 15, 2016). The Carnegie Hall Archives intends to release updated datasets at semi-regular (e.g. 3-6 month) intervals.
+
+### Out of Scope
 ### Building LOD at Carnegie Hall
 
 ## GET INVOLVED
