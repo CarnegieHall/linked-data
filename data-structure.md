@@ -2,11 +2,14 @@
 
 ## OVERVIEW
 
-This page provides details about the creation and structure of Carnegie Hall (CH) Linked Open Data (LOD). To learn more about the project and content of the dataset, please see the CH LOD repository's README. (link)
+This page provides details about the creation and structure of Carnegie Hall (CH) Linked Open Data (LOD). To learn more about the project and content of the dataset, please see the CH LOD repository's [README](../README.md).
 
 Query the data here.[link]
 
 ## ADDITIONAL DOCUMENTS
+
+Details about the following topics are available in the dedicated pages linked below.
+
 | Topic  |  See... |
 |---|---|
 | Namespaces used or created ||
@@ -15,13 +18,18 @@ Query the data here.[link]
 
 ## DATA MODEL
 
-[intro]
+To reiterate, CH performance data has two distinct layers of metadata: **event** and **work performance** (sub-event).
 
-View CH LOD Data Model here(link). You can also download it in XML.
+[Data Model overview]
+
+View [CH LOD Data Model](https://drive.google.com/file/d/0B7Vrvqrwpk98RDNfYmpoYWhVaVk/view?usp=sharing). You can also download it in XML.
 
 ### Sample Event Record
 
 Below is a CH event record (in Turtle format), followed by statements about one of the work performances and a related performer from the event.
+
+[overview of what we are seeing/supposed to focus on with the sample below]
+
 ```
 <http://data.carnegiehall.org/events/8195> a <http://erlangen-crm.org/160714/E7_Activity>, 
         event:Event ; 
