@@ -70,3 +70,9 @@ _The MIT License (MIT)_
 _Copyright (c) 2017 Carnegie Hall_
 
 All contents are released under the terms described in the [MIT License](https://github.com/CarnegieHall/linked-data/blob/master/LICENSE) included in this repository.
+
+## ACKNOWLEDGEMENTS 
+
+[mm]
+[linked jazz]
+[other open orgs with githubs as resources]
