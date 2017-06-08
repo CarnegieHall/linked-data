@@ -36,14 +36,14 @@ How is CH's performance history represented as linked open data? Characteristics
 
 Let's explore the event data structure further... 
 1. Each event has its own Uniform Resource Indentifier (URI) and includes metadata related to: 
-  - Date/Time (ISO 8601 date/time string) 
-  - Venue 
-  - Title (label) 
-  - Entities who participate in the entirety of the program, like a conductor and/or an orchestra.
+      - Date/Time (ISO 8601 date/time string) 
+      - Venue 
+      - Title (label) 
+      - Entities who participate in the entirety of the program, like a conductor and/or an orchestra.
 
 2. Components of an Event – e.g. each work performed – is a sub-event, with its own URI. Work performance metadata includes:
-  - Works (musical and non-musical)
-  - Performers 
+      - Works (musical and non-musical)
+      - Performers 
 
 The separation of a work performance from the event enables us to demonstrate context. Statements link performers to a specific work performance, rather than generically to an entire event.
 
