@@ -2,9 +2,9 @@
 
 ## OVERVIEW
 
-This page provides details about the creation and structure of Carnegie Hall (CH) Linked Open Data (LOD). To learn more about the project and content of the dataset, please see the CH LOD repository's [README](../README.md).
+This page provides details about the creation and structure of Carnegie Hall (CH) Linked Open Data (LOD). To learn more about the project and content of the dataset, please see the CH LOD repository's [README](./README.md).
 
-Query the data here.[link]
+Query the data [here](data.carnegiehall.org)
 
 ## ADDITIONAL DOCUMENTATION
 
