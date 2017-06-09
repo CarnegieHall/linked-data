@@ -188,7 +188,7 @@ for item in sys.argv[4:]:
                             foafClass = 'Agent'
                         elif instrument_type == 'ANIMAL':
                             gEntities.add(
-                                (URIRef(performer_uri), RDF.type, dbo.animal) )
+                                (URIRef(performer_uri), RDF.type, dbo.Animal) )
                             gEntities.add(
                                 (URIRef(performer_uri), RDFS.label, Literal(fullName)) )
                             gEntities.add(
