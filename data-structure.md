@@ -6,15 +6,15 @@ This page provides details about the creation and structure of Carnegie Hall (CH
 
 Query the data here.[link]
 
-## ADDITIONAL DOCUMENTS
+## ADDITIONAL DOCUMENTATION
 
 Details about the following topics are available in the dedicated pages linked below.
 
 | Topic  |  See... |
 |---|---|
-| Namespaces used or created ||
-| Schemas and vocabularies ||
-|Properties||
+| Namespaces |[ch-lod-namespaces.md](./ch-lod-namespaces.md)|
+| Classes |[ch-lod-classes.md](./ch-lod-classes.md)|
+|Properties|[ch-lod-properties.md](./ch-lod-properties.md)|
 
 ## DATA MODEL
 
@@ -28,7 +28,7 @@ View [CH LOD Data Model](https://drive.google.com/file/d/0B7Vrvqrwpk98RDNfYmpoYW
 
 Below is a CH event record (in Turtle format), followed by statements about one of the work performances and a related performer from the event.
 
-[overview of what we are seeing/supposed to focus on with the sample below]
+**[overview of what we are seeing/supposed to focus on with the sample below]**
 
 ```
 <http://data.carnegiehall.org/events/8195> a <http://erlangen-crm.org/160714/E7_Activity>, 
