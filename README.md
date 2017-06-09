@@ -5,12 +5,12 @@
 
 The purpose of this repository is to share Carnegie Hall's performance history as linked open data, and resources related to its creation and maintenance. 
 
-You can explore the Carnegie Hall performance history linked open data [here], and read more about it below.
+You can explore the Carnegie Hall performance history linked open data [here](data.carnegiehall.org), and read more about it below.
 
 ## CONTENTS
 
 The Carnegie Hall Archives believes in showing its work. To that goal, this repository includes:
-- Link to explore the CH LOD via a SPARQL endpoint for querying, with option to download the entire data set
+- [Link](data.carnegiehall.org) to explore the CH LOD via a SPARQL endpoint for querying, with option to download the entire data set
 - [Python scripts](/scripts/scripts-overview.md) used to transform CSV to LOD serializations
 - An overview of [Carnegie Hall's performance history](#carnegie-hall-performance-history-as-linked-open-data)
 - Documentation about the [structure and content of the Carnegie Hall linked open data](/data-structure.md)
@@ -64,7 +64,16 @@ How did the Carnegie Hall Archives get from an internal database to 3 million tr
 
 ## GET INVOLVED
 ### Provide Feedback or Report Issues
+
+Want to help Carnegie Hall improve the performance history data? Use the [Issues](https://github.com/CarnegieHall/linked-data/issues) page to share:
+- **Feedback** - What was useful about the data or the resources in this repository? 
+- **Recommendations** - Have a great idea for the content, structure, or resources we describe you'd like to share with us?
+- **Sample Queries** - Did you write an interesting SPARQL query others might find useful? 
+- **Issues or Inaccuracies** - Notice something out of place or incorrect? 
+
 ### Build Something & Share It
+
+Did you use the CH LOD to build an interesting visualization, or port it into a new project? We'd love to see it! [Submit](https://github.com/CarnegieHall/linked-data/issues) a link and a description of how you utilized the data set.
 
 ## USAGE AND LICENSE
 ### USAGE GUIDELINES
