@@ -155,6 +155,7 @@ with open(filePath_2, 'rU') as f2:
 
                     gEvents.add( (URIRef(event_uri), RDF.type, event.Event) )
                     gEvents.add( (URIRef(event_uri), RDF.type, ecrm.E7_Activity) )
+                    gEvents.add( (URIRef(event_uri), RDF.type, schema.Event) )
                     gEvents.add( (URIRef(event_uri), RDFS.label, Literal(event_title, lang='en') ) )
                     gEvents.add( (URIRef(event_uri), DCTERMS.date, Literal(isoDateTime, datatype=XSD.dateTime) ) )
                     gEvents.add( (URIRef(event_uri), event.place, URIRef(venue_uri)) )
@@ -220,6 +221,7 @@ with open(filePath_3, 'rU') as f3:
                 if item not in placeHolders:
                     gEvents.add( (URIRef(event_uri), event.product, URIRef(work_performance)) )
                     gEvents.add( (work_performance, RDF.type, event.Product) )
+                    gEvents.add( (work_performance, RDF.type, schema.subEvent) )
                     gEvents.add( (work_performance, event.product, URIRef(work_uri)) )
 
                     if '0' not in soloists:
