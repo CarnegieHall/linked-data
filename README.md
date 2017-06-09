@@ -5,15 +5,15 @@
 
 The purpose of this repository is to share Carnegie Hall's performance history as linked open data, and resources related to its creation and maintenance. 
 
-You can explore the Carnegie Hall (CH) performance history linked open data [here], and read more about it below.
+You can explore the Carnegie Hall performance history linked open data [here], and read more about it below.
 
 ## CONTENTS
 
 The Carnegie Hall Archives believes in showing its work. To that goal, this repository includes:
 - Link to explore the CH LOD via a SPARQL endpoint for querying, with option to download the entire data set
 - [Python scripts](/scripts/scripts-overview.md) used to transform CSV to LOD serializations
-- An overview of [CH's performance history]
-- Documentation about the [structure and content of the CH LOD]
+- An overview of [Carnegie Hall's performance history](#carnegie-hall-performance-history-as-linked-open-data)
+- Documentation about the [structure and content of the Carnegie Hall linked open data](/data-structure.md)
 
 ## CARNEGIE HALL PERFORMANCE HISTORY AS LINKED OPEN DATA
 
@@ -30,8 +30,8 @@ Starting in 2013, Carnegie Hall began publishing some of these records to the 
 
 #### Data Structure
 
-How is CH's performance history represented as linked open data? Characteristics about CH performance events fall into two categories:
-1. Basic **information that applies to the entire event**.
+How is the Carnegie Hall (CH) performance history represented as linked open data? Characteristics about CH performance events fall into two categories:
+1. **Information that applies to the entire event**.
 2. **Information that applies to each presentation of a work** during an event (a *work performance*). 
 
 The separation of a work performance from the event enables us to demonstrate context. Statements link performers to a specific work performance, rather than generically to an entire event. Let's explore the event data structure further... 
