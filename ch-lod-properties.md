@@ -11,7 +11,7 @@
 |[birthPlace](http://dbpedia.org/ontology/birthPlace)|[DBPedia Ontology](http://dbpedia.org/ontology/)|Relates the URI of an entity (e.g. composer, performer, conductor) to the GeoNames URI for the birth place|
 |[birthDate](http://schema.org/birthDate)|[Schema.org](http://schema.org/)|Relates the URI of an entity (e.g. composer, performer, conductor) to a date of birth|
 |[deathDate](http://schema.org/deathDate)|[Schema.org](http://schema.org/)|Relates the URI of an entity (e.g. composer, performer, conductor) to a date of death|
-|[containsPlace](http://schema.org/containsPlace)|[Schema.org](http://schema.org/)|RRelates the URI for Carnegie Hall (the building) to its constituent venues|
+|[containsPlace](http://schema.org/containsPlace)|[Schema.org](http://schema.org/)|Relates the URI for Carnegie Hall (the building) to its constituent venues|
 |[creator](http://purl.org/dc/terms/creator)|[DCMI Metadata Terms (dcterms)]()|Relates the URI of a creative work to the URI of its creator (e.g. composer, playwright, etc.)|
 |[contributor](http://purl.org/dc/terms/contributor)|[DCMI Metadata Terms (dcterms)]()|Relates the URI of a creative work to the URI of a contributor (i.e. co-composer, arranger, librettist)|
 |[created](http://purl.org/dc/terms/created)|[DCMI Metadata Terms (dcterms)](http://purl.org/dc/terms/)|Relates the URI of a creative work to the date/s of its creation|
