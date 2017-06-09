@@ -92,6 +92,7 @@ with open(filePath_2, 'rU') as f2:
 
         if type_indicator in ('ANIMAL', 'ROLE_IND'):
                 instrument_uri = chroles[str(instrument_id)]
+                gInstruments.add( (URIRef(instrument_uri), RDF.type, schema.Role) )
         elif type_indicator in ('ENS', 'ROLE_GRP'):
                 instrument_uri = chensembles[str(instrument_id)]
                 gInstruments.add( (URIRef(instrument_uri), RDF.type, schema.PerformingGroup) )
