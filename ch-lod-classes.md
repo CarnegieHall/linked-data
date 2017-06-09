@@ -18,6 +18,7 @@
 |[MusicArtist](http://purl.org/ontology/mo/MusicArtist)|Used in CH dataset to classify performing groups and organizations, e.g. orchestras, string quartets, etc.|[Music Ontology](http://purl.org/ontology/mo/)|
 |[Instrument](http://purl.org/ontology/mo/Instrument)|Used in CH dataset to classify musical instruments|[Music Ontology](http://purl.org/ontology/mo/)|
 |[PerformingGroup](http://schema.org/PerformingGroup) |Use in CH dataset to classify performing ensembles|[Schema.org](http://schema.org/)|
+|[Role](http://schema.org/Role) |Use in CH dataset to classify roles, e.g. actor, conductor, magician, etc.|[Schema.org](http://schema.org/)|
 |[Venue](http://dbpedia.org/ontology/Venue)|Used in CH dataset to classify the Carnegie Hall building, as well as each constituent venue|[DBpedia Ontology](http://dbpedia.org/ontology/)|
 |[EventVenue](http://schema.org/EventVenue)|Used in CH dataset to classify the Carnegie Hall building, as well as each constituent venue|[Schema.org](http://schema.org/)|
 |[ArchitecturalStructure](http://dbpedia.org/ontology/ArchitecturalStructure)|Used in CH dataset to classify the Carnegie Hall building|[DBpedia Ontology](http://dbpedia.org/ontology/)|
