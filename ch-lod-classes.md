@@ -9,7 +9,7 @@
 |[Event](http://schema.org/Event)|Used in CH dataset to classify Events|[Schema.org](http://schema.org/)|
 |[E7_Activity](http://erlangen-crm.org/160714/E7_Activity)|Used in CH dataset to classify Events|[Erlangen CRM / OWL](http://erlangen-crm.org/160714/)|
 |[Product](http://purl.org/NET/c4dm/event.owl#Product)|Used in CH dataset to classify sub-events, i.e. work performances|[Event Ontology](http://purl.org/NET/c4dm/event.owl)|
-|[MusicComposition](http://schema.org/subEvent)|Used in CH dataset to classify sub-events, i.e. work performances|[Schema.org](http://schema.org/)|
+|[subEvent](http://schema.org/subEvent)|Used in CH dataset to classify sub-events, i.e. work performances|[Schema.org](http://schema.org/)|
 |[MusicalWork](http://d-nb.info/standards/elementset/gnd#MusicalWork)|Used in CH dataset to classify musical works; a sub-class of Work|[GND Ontology](http://d-nb.info/standards/elementset/gnd)|
 |[Work](http://d-nb.info/standards/elementset/gnd#Work)|Used in CH dataset for non-musical creative works, e.g. plays.|[GND Ontology](http://d-nb.info/standards/elementset/gnd)|
 |[MusicalWork](http://purl.org/ontology/mo/MusicalWork)|Used in CH dataset to classify musical works|[Music Ontology](http://purl.org/ontology/mo/)|
