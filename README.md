@@ -5,12 +5,12 @@
 
 The purpose of this repository is to share Carnegie Hall's performance history as linked open data, and resources related to its creation and maintenance. 
 
-You can explore the Carnegie Hall performance history linked open data [here](data.carnegiehall.org), and read more about it below.
+You can explore the Carnegie Hall performance history linked open data [here](http://data.carnegiehall.org), and read more about it below.
 
 ## CONTENTS
 
 The Carnegie Hall Archives believes in showing its work. To that goal, this repository includes:
-- [Link](data.carnegiehall.org) to explore the CH LOD via a SPARQL endpoint for querying, with option to download the entire data set
+- [Link](http://data.carnegiehall.org) to explore the CH LOD via a SPARQL endpoint for querying, with option to download the entire data set
 - [Python scripts](/scripts/scripts-overview.md) used to transform CSV to LOD serializations
 - An overview of [Carnegie Hall's performance history](#carnegie-hall-performance-history-as-linked-open-data)
 - Documentation about the [structure and content of the Carnegie Hall linked open data](/data-structure.md)
