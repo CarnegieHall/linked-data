@@ -101,7 +101,9 @@ _Copyright (c) 2017 Carnegie Hall_
 All contents are released under the terms described in the [MIT License](https://github.com/CarnegieHall/linked-data/blob/master/LICENSE) included in this repository.
 
 ## ACKNOWLEDGEMENTS 
+Thank you to [Matt Miller](https://github.com/thisismattmiller) for his contributions to this project. 
 
-[mm]
-[linked jazz]
-[other open orgs with githubs as resources]
+Thank you to the following organizations for inspiration and commitment to the open data community:
+- [Linked Jazz](https://linkedjazz.org/)
+- [New York Philharmonic Archives](https://github.com/nyphilarchive/PerformanceHistory)
+- [The Museum of Modern Art (MoMA)](https://github.com/MuseumofModernArt/collection)
