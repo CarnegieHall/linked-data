@@ -2,6 +2,8 @@
 
 ## OVERVIEW
 
+Below are properties used in the Carnegie Hall (CH) data set. The table also includes the vocabulary from which the property is sourced and a brief usage note per property.
+
 ## PROPERTIES USED
 |Property|Vocabulary|CH Usage|
 |:----|:---|:---|
@@ -34,3 +36,6 @@
 |[historicalName](http://www.geonames.org/ontology#historicalName)|[GeoNames Ontology](http://www.geonames.org/ontology)|Relates the URI for a venue to a human-readable name (text string) by which it was previously known (e.g. Weill Recital Hall --> Carnegie Recital Hall)|
 |[long](http://www.w3.org/2003/01/geo/wgs84_pos#long)|[WGS84 Geo Positioning](http://www.w3.org/2003/01/geo/wgs84_pos)|Relates the URI of a birth place to the longitude coordinate|
 |[lat](http://www.w3.org/2003/01/geo/wgs84_pos#lat)|[WGS84 Geo Positioning](http://www.w3.org/2003/01/geo/wgs84_pos)|Relates the URI of a birth place to the latiitude coordinate|
+
+----------------------------
+*Back to [README](/README.md)*
