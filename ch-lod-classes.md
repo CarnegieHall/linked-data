@@ -2,6 +2,8 @@
 
 ## OVERVIEW
 
+Below are classes used in the Carnegie Hall (CH) data set. The table also includes a brief usage note per class and the vocabulary from which the class is sourced. 
+
 ## CLASSES USED
 |Class|CH Usage|Vocabulary|
 |:----|:---|:----------|
@@ -24,3 +26,6 @@
 |[Venue](http://dbpedia.org/ontology/Venue)|Used in CH dataset to classify the Carnegie Hall building, as well as each constituent venue|[DBpedia Ontology](http://dbpedia.org/ontology/)|
 |[EventVenue](http://schema.org/EventVenue)|Used in CH dataset to classify the Carnegie Hall building, as well as each constituent venue|[Schema.org](http://schema.org/)|
 |[ArchitecturalStructure](http://dbpedia.org/ontology/ArchitecturalStructure)|Used in CH dataset to classify the Carnegie Hall building|[DBpedia Ontology](http://dbpedia.org/ontology/)|
+
+----------------------------
+*Back to [README](/README.md)*
