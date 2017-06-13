@@ -38,4 +38,4 @@ Below are properties used in the Carnegie Hall (CH) data set. The table also inc
 |[lat](http://www.w3.org/2003/01/geo/wgs84_pos#lat)|[WGS84 Geo Positioning](http://www.w3.org/2003/01/geo/wgs84_pos)|Relates the URI of a birth place to the latiitude coordinate|
 
 ----------------------------
-*Back to [README](/README.md)*
+Go to: [DATA STRUCTURE](/data-structure.md) | [README](/README.md) | [SPARQL ENDPOINT](http://data.carnegiehall.org)
