@@ -49,12 +49,13 @@ Interested in the **CH LOD data model, namespaces, URI schemas, vocabularies, an
 
 ### Potential Future Work
 
-Though the CH LOD includes about 3 million triples, there is still information missing from or out of scope of the initial release. Below is a sample of excluded content and topics. See how to [get involved](#get-involved) if you have feedback about the list of information not currently in the dataset.
+Although the CH LOD includes about 3 million triples, there is still information missing from or out of scope of this initial release. Below is a sample of excluded content and topics. See how to [get involved](#get-involved) if you have feedback about the list of information not currently in the dataset.
 
 - Some past **performance records are missing**; such data will be added as it becomes available. 
-- **Complete, accurate biographical data is not always available** for performers and composers. To the extent that this information has been provided to Carnegie Hall or is available from published authority sources, it has been added to the dataset. Existing Carnegie Hall URIs will remain stable, but additional or revised statements (e.g. newly acquired birth/death dates, corrected spellings, etc.) may be added at any time. 
+- **Complete, accurate biographical data is not always available** for performers and composers. To the extent that this information has been provided to Carnegie Hall or is available from published authority sources, it has been added to the dataset. Existing Carnegie Hall URIs will remain stable, but additional or revised statements (e.g. newly acquired birth/death dates, corrected spellings, etc.) may be added at any time.
+- **Additional external authority IDs** - we plan to add more external authority IDs for entities and creative works, and to expand the scope to include Wikidata IDs
 - **Presenting organizations**, e.g. concert management and/or licensees who rented the Hall, are not included in the initial release
-- **Roles and instruments on a specific Work Performance** for an entity. We are working on a way to describe how a certain artist played an instrument/role during a work performance.
+- **Roles and instruments on a specific Work Performance** for an entity. We are working on a way to describe which instrument/role a certain artist played an during a work performance.
 - **Credited non-performing roles**, e.g. choral/ensemble preparation, technical roles, etc., are not included in the initial release
 - **Building LOD at Carnegie Hall** - How did the Carnegie Hall Archives get from an internal database to 3 million triples containing open data from a dozen ontologies and vocabularies? 
 
