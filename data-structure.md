@@ -67,7 +67,7 @@ Below is a CH event record (in Turtle format), followed by statements about one 
 
 ## GET INVOLVED
 
-Something in this document unclear? Have a suggestions or comment about a topic described above? Submit your feedback via ['Issues']().
+Something in this document unclear? Have a suggestions or comment about a topic described above? Submit your feedback via ['Issues'](https://github.com/CarnegieHall/linked-data/issues).
 
 ----------------------------
 *Back to [README](/README.md)*
