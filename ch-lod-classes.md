@@ -28,4 +28,4 @@ Below are classes used in the Carnegie Hall (CH) data set. The table also includ
 |[ArchitecturalStructure](http://dbpedia.org/ontology/ArchitecturalStructure)|Used in CH dataset to classify the Carnegie Hall building|[DBpedia Ontology](http://dbpedia.org/ontology/)|
 
 ----------------------------
-Go to: [Data Structure](/data-structure.md) | [README](/README.md) | [SPARQL ENDPOINT](http://data.carnegiehall.org)
+Go to: [DATA STRUCTURE](/data-structure.md) | [README](/README.md) | [SPARQL ENDPOINT](http://data.carnegiehall.org)
