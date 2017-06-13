@@ -20,15 +20,11 @@ Details about the following topics are available in the dedicated pages linked b
 
 To reiterate, CH performance data has two distinct layers of metadata: **event** and **work performance** (sub-event).
 
-[Data Model overview]
-
-View [CH LOD Data Model](https://drive.google.com/file/d/0B7Vrvqrwpk98RDNfYmpoYWhVaVk/view?usp=sharing). You can also download it in XML.
+View [CH LOD Data Model](https://drive.google.com/file/d/0B7Vrvqrwpk98RDNfYmpoYWhVaVk/view?usp=sharing). Click to view the document in Draw.io - you can also download the data model in XML.
 
 ### Sample Event Record
 
-Below is a CH event record (in Turtle format), followed by statements about one of the work performances and a related performer from the event.
-
-**[overview of what we are seeing/supposed to focus on with the sample below]**
+Below is a CH event record (in Turtle format), followed by statements about one of the work performances and a related performer from the event. View an [HTML representation](www.carnegiehall.org/widgets/opas/concert.aspx?id=8195) of this event on the Carnegie Hall Performance History Search.
 
 ```
 <http://data.carnegiehall.org/events/8195> a <http://erlangen-crm.org/160714/E7_Activity>, 
