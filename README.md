@@ -49,7 +49,7 @@ Interested in the **CH LOD data model, namespaces, URI schemas, vocabularies, an
 
 ### Potential Future Work
 
-Though the CH LOD includes about 3 million triples, there is still information missing from or out of scope of the initial release. Below is a sample of excluded content and topics. See how to [get involved] if you have feedback about the list of information not currently in the dataset.
+Though the CH LOD includes about 3 million triples, there is still information missing from or out of scope of the initial release. Below is a sample of excluded content and topics. See how to [get involved](#get-involved) if you have feedback about the list of information not currently in the dataset.
 
 - Some past **performance records are missing**; such data will be added as it becomes available. 
 - **Complete, accurate biographical data is not always available** for performers and composers. To the extent that this information has been provided to Carnegie Hall or is available from published authority sources, it has been added to the dataset. Existing Carnegie Hall URIs will remain stable, but additional or revised statements (e.g. newly acquired birth/death dates, corrected spellings, etc.) may be added at any time. 
