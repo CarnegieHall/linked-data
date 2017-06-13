@@ -5,12 +5,12 @@
 
 The purpose of this repository is to share Carnegie Hall's performance history as linked open data, and resources related to its creation and maintenance. 
 
-You can explore the Carnegie Hall performance history linked open data [here](http://data.carnegiehall.org), and read more about it below.
+Explore Carnegie Hall's linked open data [here](http://data.carnegiehall.org), and read more about it below.
 
 ## CONTENTS
 
 The Carnegie Hall Archives believes in showing its work. To that goal, this repository includes:
-- [Link](http://data.carnegiehall.org) to explore the CH LOD via a SPARQL endpoint for querying, with option to download the entire data set
+- [Link](http://data.carnegiehall.org) to explore the CH LOD via a SPARQL endpoint for querying
 - [Python scripts](/scripts/scripts-overview.md) used to transform CSV to LOD serializations
 - An overview of [Carnegie Hall's performance history](#carnegie-hall-performance-history-as-linked-open-data)
 - Documentation about the [structure and content of the Carnegie Hall linked open data](/data-structure.md)
@@ -22,11 +22,11 @@ The initial release encompasses performance history data from 1891 through the e
 
 #### What Does "Performance History" Mean at CH?
 
-Since it opened in 1891, Carnegie Hall has been a center of cultural and political expression, holds multiple performance spaces, and we present and provide a venue for many different types of music and culture. Since its transition to a not-for-profit institution in 1960, Carnegie Hall has continued to deepen its commitment to music education and community outreach and programming with concerts and events in neighborhoods throughout New York City, and the world.
+Since it opened in 1891, Carnegie Hall has been a center of cultural and political expression, holds multiple performance spaces, and presents and provides a venue for many different types of music and culture. Since its transition to a not-for-profit institution in 1960, Carnegie Hall has continued to deepen its commitment to music education and community outreach and programming with concerts and events in neighborhoods throughout New York City, and the world.
 
 The Carnegie Hall Archives maintains a database, the [Orchestra Planning and Administration System (OPAS)](http://fineartssoftware.com/), with a goal to track every event – musical and nonmusical – that has occurred in the public performance spaces of CH since 1891. Since our archives were not established until 1986, there are some gaps in these records, which we continue to fill in using sources like digitized newspaper listings and reviews, and many missing pieces – concert programs, posters, etc. – are donated to us, or we buy them on eBay. This database now covers **more than 50,000 events across nearly all musical genres, as well as theatrical, dance and spoken word events, meetings, lectures, civic rallies, and political conventions**. It also includes corresponding records for more than 100,000 artists, 20,000 composers and over 85,000 musical works.
 
-Starting in 2013, Carnegie Hall began publishing some of these records to our online [Performance History Search](https://www.carnegiehall.org/PerformanceHistorySearch/). You can now find the records for more than 45,000 events from 1891 to the present. Data cleanup efforts are ongoing, and new records are published each month. The Carnegie Hall linked data prototype uses this published data set.
+Starting in 2013, Carnegie Hall began publishing some of these records to our online [Performance History Search](https://www.carnegiehall.org/PerformanceHistorySearch/). The Performance History Search has records for more than 45,000 events from 1891 to the present. Data cleanup efforts are ongoing, and new records are published each month to that HMTL presentation. The Carnegie Hall linked data prototype uses this published data set.
 
 #### Data Structure
 
@@ -37,14 +37,14 @@ How is the Carnegie Hall (CH) performance history represented as linked open dat
 The separation of a work performance from the event enables us to demonstrate context. Statements link performers to a specific work performance, rather than generically to an entire event. Let's explore the event data structure further... 
 
 1. Each event has its own Uniform Resource Indentifier (URI) and includes metadata related to: 
-      - Date/Time (ISO 8601 date/time string) 
-      - Venue 
-      - Title (label) 
-      - Entities who participate in the entirety of the program, like a conductor and/or an orchestra.
+      - *Date/Time* (ISO 8601 date/time string) 
+      - *Venue* 
+      - *Title* (label) 
+      - *Entities who participate in the entirety of the program*, like a conductor and/or an orchestra.
 
 2. Components of an event, e.g. each work performed, is a sub-event with its own URI. Work performance metadata includes:
-      - Works (musical and non-musical)
-      - Performers 
+      - *Works* (musical and non-musical)
+      - *Performers* 
 
 Interested in the **CH LOD data model, namespaces, URI schemas, vocabularies, and ontologies**? Check out CH's in-depth [data structure and schema documentation](/data-structure.md) in this repository.
 
@@ -57,10 +57,7 @@ Though the CH LOD includes about 3 million triples, there is still information m
 - **Presenting organizations**, e.g. concert management and/or licensees who rented the Hall, are not included in the initial release
 - **Roles and instruments on a specific Work Performance** for an entity. We are working on a way to describe how a certain artist played an instrument/role during a work performance.
 - **Credited non-performing roles**, e.g. choral/ensemble preparation, technical roles, etc., are not included in the initial release
-
-### Building LOD at Carnegie Hall
-
-How did the Carnegie Hall Archives get from an internal database to 3 million triples containing open data from a dozen ontologies and vocabularies? 
+- **Building LOD at Carnegie Hall** - How did the Carnegie Hall Archives get from an internal database to 3 million triples containing open data from a dozen ontologies and vocabularies? 
 
 ## GET INVOLVED
 ### Provide Feedback or Report Issues
@@ -93,7 +90,7 @@ We plan to update the scripts regularly. We welcome any [feedback](https://githu
 
 The Carnegie Hall Performance History dataset includes data from the [GeoNames geographical database](http://www.geonames.org/), which is licensed under a [Creative Commons Attribution 3.0 License](http://creativecommons.org/licenses/by/3.0/).
 
-#### SCRIPTS LICENSE
+#### REPOSTIORY AND SCRIPTS LICENSE
 _The MIT License (MIT)_
 
 _Copyright (c) 2017 Carnegie Hall_
