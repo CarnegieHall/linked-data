@@ -76,7 +76,7 @@ Did you use the CH LOD to build an interesting visualization, or port it into a 
 #### DATA
 Carnegie Hall offers the CH Performance History as Linked Open Data dataset as-is and makes no representations or warranties of any kind concerning the contents. Please see the data license statement below.
 
-If you have questions about the dataset or its usage, please submit a new ['Issue']() or email *archives at carnegiehall dot org*. 
+If you have questions about the dataset or its usage, please submit a new ['Issue'](https://github.com/CarnegieHall/linked-data/issues) or email *archives at carnegiehall dot org*. 
 
 #### SCRIPTS
 This code is provided “as is” and for you to use at your own risk. The information included in the contents of this repository is not necessarily complete. Carnegie Hall offers the scripts as-is and makes no representations or warranties of any kind.
