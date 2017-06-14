@@ -19,8 +19,10 @@ Details about the following topics are available in the dedicated pages linked b
 ## DATA MODEL
 
 To reiterate, CH performance data has two distinct layers of metadata: **event** and **work performance** (sub-event).
+ 
+![CH LOD Data Model diagram](/CarnegieHall_LOD_DataModel.png) 
 
-View [CH LOD Data Model](https://drive.google.com/file/d/0B7Vrvqrwpk98RDNfYmpoYWhVaVk/view?usp=sharing). Click to view the document in Draw.io - you can also download the data model in XML.
+You can download the CH LOD Data model diagram [here](/CarnegieHall_LOD_DataModel.png). If you'd prefer to view/download the [data model in XML](https://drive.google.com/file/d/0B7Vrvqrwpk98RDNfYmpoYWhVaVk/view?usp=sharing) you can use Draw.io. 
 
 ### Sample Event Record
 
