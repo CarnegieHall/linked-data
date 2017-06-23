@@ -104,6 +104,7 @@ with open(filePath_2, 'rU') as f3:
         work_uri = chworks[work_id]
         composer_id = row[1]
         composer_uri = composers_tempDict[composer_id]['uri']
+        group = composers_tempDict[composer_id]['group uri']
         title = row[2]
         dateCirca = row[3]
         dateStart = row[4]
@@ -141,6 +142,7 @@ with open(filePath_2, 'rU') as f3:
                 gWorks.add( (URIRef(work_uri), RDFS.label, Literal(work.title.encode('utf-8')) ) )
                 gWorks.add( (URIRef(work_uri), DCTERMS.creator, URIRef(composer_uri) ) )
             elif genre_code == 'placeholder':
+                gWorks.add( (URIRef(work_uri), RDF.type, RDF.Bag ) )
                 gWorks.add( (URIRef(work_uri), RDFS.label, Literal(work.title.encode('utf-8')) ) )
             if work_date:
                 if len(work_date) == 4:
