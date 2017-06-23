@@ -16,7 +16,8 @@ Below are classes used in the Carnegie Hall (CH) data set. The table also includ
 |[Work](http://d-nb.info/standards/elementset/gnd#Work)|Used in CH dataset for non-musical creative works, e.g. plays.|[GND Ontology](http://d-nb.info/standards/elementset/gnd)|
 |[MusicalWork](http://purl.org/ontology/mo/MusicalWork)|Used in CH dataset to classify musical works|[Music Ontology](http://purl.org/ontology/mo/)|
 |[MusicComposition](http://schema.org/MusicComposition)|Used in CH dataset to classify musical works; a sub-class of CreativeWork|[Schema.org](http://schema.org/)|
-|[CreativeWork](http://schema.org/CreativeWork)|Used in CH dataset for non-musical creative works, e.g. plays.|[Schema.org](http://schema.org/)|
+|[CreativeWork](http://schema.org/CreativeWork)|Used in CH dataset to classify non-musical creative works, e.g. plays.|[Schema.org](http://schema.org/)|
+|[Bag](http://www.w3.org/1999/02/22-rdf-syntax-ns#Bag)| Used in CH dataset to classify placeholder "works", e.g. "Selections not included in program" or "No program issued", which are needed in source data to associate performers with events for which no program information is available.|[RDF Schema](http://www.w3.org/1999/02/22-rdf-syntax-ns#)|
 |[Person](http://xmlns.com/foaf/0.1/Person)|Used in CH dataset to classify people|[Friend Of A Friend (FOAF)](http://xmlns.com/foaf/0.1/)|
 |[Agent](http://xmlns.com/foaf/0.1/Agent)|Used in CH dataset to classify performing groups and organizations, e.g. orchestras, string quartets, etc.|[Friend Of A Friend (FOAF)](http://xmlns.com/foaf/0.1/)|
 |[MusicArtist](http://purl.org/ontology/mo/MusicArtist)|Used in CH dataset to classify performing groups and organizations, e.g. orchestras, string quartets, etc.|[Music Ontology](http://purl.org/ontology/mo/)|
