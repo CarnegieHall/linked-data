@@ -266,14 +266,15 @@ with open(filePath_3, 'rU') as f3:
         groupURI = row[2]
         lastName = row[3]
         firstName = row[4]
-        birthDay = row[5]
-        birthMonth = row[6]
-        birthYear = row[7]
-        birthCountry_id = row[8]
-        deathDay = row[9]
-        deathMonth = row[10]
-        deathYear = row[11]
-        gender = row[12]
+        altName = row[5]
+        birthDay = row[6]
+        birthMonth = row[7]
+        birthYear = row[8]
+        birthCountry_id = row[9]
+        deathDay = row[10]
+        deathMonth = row[11]
+        deathYear = row[12]
+        gender = row[13]
 
         composer = Entity([firstName, lastName], (
             [birthYear, birthMonth, birthDay], [deathYear, deathMonth, deathDay]))
@@ -287,7 +288,7 @@ with open(filePath_3, 'rU') as f3:
             idList.append(composer_id)
             if groupURI:
                 groupList.append(groupURI)
-                if groupURI not in ('reference', 'subject'):
+                if groupURI not in ('reference', 'genre'):
                     gEntities.add(
                         (URIRef(composer_uri), gndo.professionOrOccupation, URIRef(groupURI)) )
             else:
@@ -297,8 +298,8 @@ with open(filePath_3, 'rU') as f3:
                     (URIRef(composer_uri), gndo.professionOrOccupation, URIRef(groupURI)) )
 
             ## This section deals with external URI references
-            linkCode = row[13]
-            link = row[14]
+            linkCode = row[14]
+            link = row[15]
             linkDict = {'dbpedia': '', 'lcnaf': '', 'mbz': '', 'geobirth': ''}
             if linkCode in linkDict:
                 linkDict[str(linkCode)] = link
@@ -308,7 +309,7 @@ with open(filePath_3, 'rU') as f3:
                 ## Index uses new ID that has been padded to 1 million
                 ## We still store the original composer ID so we can link to works records
 
-                if groupURI not in ('reference', 'subject'):
+                if groupURI not in ('reference', 'genre'):
                         if gender:
                                 foafClass = 'Person'
                                 gEntities.add (
@@ -321,9 +322,14 @@ with open(filePath_3, 'rU') as f3:
                                         (URIRef(composer_uri), RDF.type, FOAF.Agent) )
                                 gEntities.add(
                                         (URIRef(composer_uri), RDFS.label, Literal(fullName)) )
-                elif groupURI != 'reference':
+                elif groupURI == 'genre':
+                        foafClass = ''
                         gEntities.add(
-                                (URIRef(composer_uri), RDFS.label, Literal(fullName)) )
+                                (URIRef(composer_uri), RDF.type, FOAF.Person) )
+                        gEntities.add(
+                                (URIRef(composer_uri), RDFS.label, Literal(altName)) )
+                else:
+                        foafClass = ''
                 
                 entityDict[str(entity_id)] = {}
                 entityDict[str(entity_id)]['composer id'] = composer_id
@@ -371,13 +377,13 @@ with open(filePath_3, 'rU') as f3:
                     entityDict[str(addressLink)][str(linkCode)] = link
 
         else:
-            linkCode = row[13]
-            link = row[14]
+            linkCode = row[14]
+            link = row[15]
 
             if groupURI:
                 if groupURI not in groupList:
                     groupList.append(groupURI)
-                    if groupURI not in ('reference', 'subject'):
+                    if groupURI not in ('reference', 'genre'):
                         gEntities.add(
                             (URIRef(composer_uri), gndo.professionOrOccupation, URIRef(groupURI)) )
             else:
@@ -432,17 +438,13 @@ for key in entityDict:
 
         dbpedia = entityDict[str(key)]['dbpedia']
         if dbpedia:
-                if 'subject' in groupList:
-                                gEntities.add( (URIRef(entityURI), SKOS.closeMatch, URIRef(dbpedia)) )
-                else:
-                                gEntities.add( (URIRef(entityURI), SKOS.exactMatch, URIRef(dbpedia)) )
+                if "genre" not in groupList:
+                        gEntities.add( (URIRef(entityURI), SKOS.exactMatch, URIRef(dbpedia)) )
 
         lcnaf = entityDict[str(key)]['lcnaf']
         if lcnaf:
-                if 'subject' in groupList:
-                                gEntities.add( (URIRef(entityURI), SKOS.closeMatch, URIRef(lcnaf)) )
-                else:
-                                gEntities.add( (URIRef(entityURI), SKOS.exactMatch, URIRef(lcnaf)) )
+                if "genre" not in groupList:
+                        gEntities.add( (URIRef(entityURI), SKOS.exactMatch, URIRef(lcnaf)) )
 
         mbz = entityDict[str(key)]['mbz']
         if mbz:
