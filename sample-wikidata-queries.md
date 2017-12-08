@@ -154,17 +154,17 @@ ORDER BY ASC (?politician)
 ```
 #List of presidents who have appeared at CH with causes of death
 #added before 2016-10
-SELECT ?h ?cause ?hl ?causel
+SELECT ?presidentID ?causeID ?presidentName ?causeLabel
 WHERE
 {
-	?h wdt:P39 wd:Q11696 .
-	?h wdt:P509 ?cause .
-    ?h wdt:P4104 ?chAgent_id.
+	?presidentID wdt:P39 wd:Q11696 .
+	?presidentID wdt:P509 ?causeID .
+    ?presidentID wdt:P4104 ?chAgent_id.
 	OPTIONAL {
-		?h rdfs:label ?hl filter (lang(?hl) = "en") .
+		?presidentID rdfs:label ?presidentName filter (lang(?presidentName) = "en") .
 	}
 	OPTIONAL {
-		?cause rdfs:label ?causel filter (lang(?causel) = "en").
+		?causeID rdfs:label ?causeLabel filter (lang(?causeLabel) = "en").
 	}
 }
 ```
