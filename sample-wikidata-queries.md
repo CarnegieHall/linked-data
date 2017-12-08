@@ -7,14 +7,15 @@ Go to [Wikidata Query Service](https://query.wikidata.org). Copy one of the samp
 ## Sample queries
 
 ### Timeline of compositions by composers in CH performance history data
-```#Timeline of compositions by composers in CH performance history data
+```
+#Timeline of compositions by composers in CH performance history data
 #defaultView:Timeline
 SELECT DISTINCT  ?item ?itemLabel ?composerLabel ?catalog_code ?publication_data
 WHERE
 {
 	?composer wdt:P4104 ?chAgent_id.
-  ?item wdt:P86 ?composer ;
-          wdt:P528 ?catolog_code ;
+    	?item wdt:P86 ?composer ;
+          wdt:P528 ?catalog_code ;
           wdt:P577 ?publication_data .
 
 	SERVICE wikibase:label { bd:serviceParam wikibase:language "en" }
