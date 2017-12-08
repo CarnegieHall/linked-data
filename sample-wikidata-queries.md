@@ -178,7 +178,7 @@ SELECT ?personID ?causeID ?personName ?causeLabel
 WHERE
 {
 	?personID wdt:P509 ?causeID .
-    ?personID wdt:P4104 ?chAgent_id.
+    	?personID wdt:P4104 ?chAgent_id.
 	OPTIONAL {
 		?personID rdfs:label ?personName filter (lang(?personName) = "en") .
 	}
