@@ -37,7 +37,7 @@ SELECT ?composer ?composerLabel ?composerImage ?tonality ?tonalityLabel ?composi
 }
 ORDER BY ?composerLabel ?tonalityLabel
 ```
-### People from CH performance history that received Grammy Award
+### People from CH performance history that received a Grammy Award
 ```
 #People from CH performance history that received Grammy Award
 SELECT DISTINCT ?person ?personLabel ?personImage WHERE {
