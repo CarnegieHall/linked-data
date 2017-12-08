@@ -2,9 +2,9 @@
 
 ## Using the sample queries
 
-## Sample queries
-
 Go to [Wikidata Query Service](https://query.wikidata.org). Copy one of the sample queries below into the query window (right panel). Then hit the blue arrow on the left to run it. The results will be in the bottom half of the screen.
+
+## Sample queries
 
 ### Timeline of compositions by composers in CH performance history data
 ```#Timeline of compositions by composers in CH performance history data
