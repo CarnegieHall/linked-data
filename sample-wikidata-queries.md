@@ -120,15 +120,15 @@ LIMIT 10
 #US presidents who have appeared at CH and spouses
 #added before 2016-10
 #TEMPLATE={"template":"Presidents of ?country and their spouses","variables":{"?country":{"query":" SELECT ?id WHERE { ?id wdt:P31 wd:Q6256 . }"} } }
-
-SELECT ?p ?pLabel ?ppicture ?w ?wLabel ?wpicture WHERE {
+#defaultView:ImageGrid
+SELECT ?president ?presidentName ?presidentPicture ?spouse ?spouseName ?spousePicture WHERE {
   BIND(wd:Q30 AS ?country)
-  ?country (p:P6/ps:P6) ?p.
-  ?p wdt:P26 ?w;
+  ?country (p:P6/ps:P6) ?president.
+  ?president wdt:P26 ?spouse;
      wdt:P4104 ?chAgent_id.
   OPTIONAL {
-    ?p wdt:P18 ?ppicture.
-    ?w wdt:P18 ?wpicture.
+    ?president wdt:P18 ?presidentPicture.
+    ?spouse wdt:P18 ?spousePicture.
   }
   SERVICE wikibase:label { bd:serviceParam wikibase:language "en". }
 }
