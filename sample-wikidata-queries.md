@@ -168,6 +168,24 @@ WHERE
 	}
 }
 ```
+
+### List of people who have appeared at CH with causes of death
+```
+#List of people who have appeared at CH with causes of death
+#added before 2016-10
+SELECT ?personID ?causeID ?personName ?causeLabel
+WHERE
+{
+	?personID wdt:P509 ?causeID .
+    ?personID wdt:P4104 ?chAgent_id.
+	OPTIONAL {
+		?personID rdfs:label ?personName filter (lang(?personName) = "en") .
+	}
+	OPTIONAL {
+		?causeID rdfs:label ?causeLabel filter (lang(?causeLabel) = "en").
+	}
+}
+```
 ### List of actors who have appeared at CH with pictures with year of birth and/or death
 ```
 #List of actors who have appeared at CH with pictures with year of birth and/or death
