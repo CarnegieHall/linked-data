@@ -40,6 +40,7 @@ ORDER BY ?composerLabel ?tonalityLabel
 ### People from CH performance history that received a Grammy Award
 ```
 #People from CH performance history that received Grammy Award
+#defaultView:ImageGrid
 SELECT DISTINCT ?person ?personLabel ?personImage WHERE {
   ?person (wdt:P166/wdt:P279*) wd:Q41254 ;
                                wdt:P4104 ?chAgent_id .
