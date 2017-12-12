@@ -191,6 +191,7 @@ WHERE
 ### List of actors who have appeared at CH with pictures with year of birth and/or death
 ```
 #List of actors who have appeared at CH with pictures with year of birth and/or death
+#Change object value wd:Q33999 in Query Helper to search other roles, e.g. conductor
 #added before 2016-10
 #defaultView:ImageGrid
 SELECT ?human ?humanLabel ?yob ?yod ?picture
