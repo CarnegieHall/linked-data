@@ -2,6 +2,8 @@
 # ----Copyright (c) 2017 Carnegie Hall | The MIT License (MIT)----
 # ----For the full license terms, please visit https://github.com/CarnegieHall/linked-data/blob/master/LICENSE----
 
+##needs further refinement to eliminate non-instrument link results
+
 ## Argument[0] is script to run
 
 import csv
