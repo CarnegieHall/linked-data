@@ -36,13 +36,19 @@ with open(filePath_2, 'rU') as f2:
 
         for key in mbzDict:
             mbz_label = mbzDict[key]
-            match_pct = fuzz.token_sort_ratio(mbz_label, chLabel)
-            if match_pct > 80:
-                print(key, '\t', mbz_label, '\t', chLabel)
+##            match_pct = fuzz.token_set_ratio(mbz_label, chLabel)
+            match_pct = fuzz.partial_ratio(mbz_label, chLabel)
+##            match_pct = fuzz.token_sort_ratio(mbz_label, chLabel)
+            if match_pct > 75:
+##                print(key, '\t', mbz_label, '\t', chLabel)
 
-##        ch_toMbzDict[str(chURI)] = {}
-##        ch_toMbzDict[str(chURI)]["label"] = chLabel
-##        ch_toMbzDict[str(chURI)]["matches"] = ""
+                ch_toMbzDict[str(chURI)] = {}
+                ch_toMbzDict[str(chURI)]["label"] = chLabel
+                ch_toMbzDict[str(chURI)]["matches"] = {}
+                ch_toMbzDict[str(chURI)]["matches"][str(key)] = mbz_label
+
+print(len(ch_toMbzDict))
+##print (json.dumps(ch_toMbzDict, indent=4))
 
 ##ch_toMbzDict_path = os.path.join(
 ##    os.path.dirname(__file__), os.pardir, 'JSON_dicts', 'ch_toMbzDict.json')
