@@ -17,12 +17,14 @@ mbz_instDict = {}
 
 h = httplib2.Http()
 link = 'https://musicbrainz.org/instruments'
+uri_root = 'https://musicbrainz.org'
 resp, html_doc = h.request(link, "GET")
 soup = BeautifulSoup(html_doc, "lxml")
 
-for result in soup.body('li'):
-    uri = ''.join([link, result.a.attrs['href']])
-    label = result.a.contents[0].string
+for result in soup.body.select(
+    'a[href^"/instrument/"]'):
+    label = result.contents[0].string
+    uri = ''.join([uri_root, result.get('href')])
 
     mbz_instDict[str(uri)] = label
 
