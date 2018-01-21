@@ -13,11 +13,16 @@ import pandas as pd
 import sys
 from fuzzywuzzy import fuzz
 from fuzzywuzzy import process
+from rdflib import Graph, Literal, Namespace, URIRef
+from rdflib.namespace import FOAF, RDF, RDFS, SKOS, XSD
+from rdflib.plugins.serializers.nt import NTSerializer
 
 filePath_1 = sys.argv[1]
 filePath_2 = sys.argv[2]
 
 ch_toMbzDict = {}
+
+g = Graph()
 
 mbzInstruments = pd.read_csv(filePath_1)
 chInstruments = pd.read_csv(filePath_2)
@@ -52,8 +57,16 @@ for result in FuzzyWuzzyResults:
             ch_toMbzDict[str(chID)]['mbz label'] = matchLabel
             ch_toMbzDict[str(chID)]['mbz ID'] = matchID
 
+            g.add( (URIRef(chID), SKOS.exactMatch, URIRef(matchID)) )
+
 ch_toMbzDict_path = os.path.join(
     os.path.dirname(__file__), os.pardir, 'JSON_dicts', 'ch_toMbzDict.json')
+
+ch_toMbzGraph_path = os.path.join(
+    os.path.dirname(__file__), os.pardir, 'graphs', 'ch_toMbzGraph.nt')
+
+g.bind("skos", SKOS)
+g = g.serialize(destination=ch_toMbzGraph_path, format='nt')
 
 with open(ch_toMbzDict_path, 'w') as f1:
     json.dump(ch_toMbzDict, f1)
