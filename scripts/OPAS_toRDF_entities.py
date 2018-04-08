@@ -199,6 +199,7 @@ for item in sys.argv[4:]:
                 lcnaf = row[14]
                 mbz = row[15]
                 geobirth = row[16]
+                wikidata = row[17]
 
                 #make a new blank dict to put into our entityDict
                 entityDict[str(address_id)] = {}
@@ -218,6 +219,7 @@ for item in sys.argv[4:]:
                 entityDict[str(address_id)]['geobirth'] = geobirth
                 entityDict[str(address_id)]['lcnaf'] = lcnaf
                 entityDict[str(address_id)]['mbz'] = mbz
+                entityDict[str(address_id)]['wikidata'] = wikidata
                 entityDict[str(address_id)]['uri'] = performer_uri
                 entityDict[str(address_id)]['composer id'] = ''
                 entityDict[str(address_id)]['foaf'] = foafClass
@@ -449,6 +451,10 @@ for key in entityDict:
         mbz = entityDict[str(key)]['mbz']
         if mbz:
                 gEntities.add( (URIRef(entityURI), SKOS.exactMatch, URIRef(mbz)) )
+
+        wikidata = entityDict[str(key)]['wikidata']
+        if wikidata:
+                gEntities.add( (URIRef(entityURI), SKOS.exactMatch, URIRef(wikidata)) )
 
         geobirth = entityDict[str(key)]['geobirth']
         birthCountry_id = entityDict[str(key)]['birth country id']
