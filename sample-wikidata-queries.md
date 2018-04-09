@@ -187,6 +187,7 @@ WHERE
 		?causeID rdfs:label ?causeLabel filter (lang(?causeLabel) = "en").
 	}
 }
+ORDER BY ASC (?causeLabel)
 ```
 ### List of actors who have appeared at CH with pictures with year of birth and/or death
 ```
