@@ -60,7 +60,7 @@ SELECT ?item ?itemLabel ?coord WHERE {
   ?item wdt:P19 ?place.
   ?item wdt:P4104 ?chAgent_id.
   ?place wdt:P625 ?coord.
-  SERVICE wikibase:label { bd:serviceParam wikibase:language "fr". }
+  SERVICE wikibase:label { bd:serviceParam wikibase:language "en". }
 }
 ```
 ### Things/people in CH performance history with most children
