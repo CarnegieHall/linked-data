@@ -52,14 +52,14 @@ SELECT DISTINCT ?person ?personLabel ?personImage WHERE {
 ```
 #Birthplaces of people named Johann
 #Can change name in query builder (change object valeu of wdt:P735 - wd:Q11122389 is Johann)
-#added before 2016-10
-# Coordinates of the birth places of people named Johann
+#Map marker displays birthplace label, coordinates, person's name (and image if available)
 #defaultView:Map
-SELECT ?item ?itemLabel ?coord WHERE {
-  ?item wdt:P735 wd:Q11122389.
-  ?item wdt:P19 ?place.
-  ?item wdt:P4104 ?chAgent_id.
+SELECT ?person ?personLabel ?placeLabel ?coord ?coordLabel ?personImage WHERE {
+  ?person wdt:P735 wd:Q11122389.
+  ?person wdt:P19 ?place.
+  ?person wdt:P4104 ?chAgent_id.
   ?place wdt:P625 ?coord.
+  OPTIONAL { ?person wdt:P18 ?personImage. }
   SERVICE wikibase:label { bd:serviceParam wikibase:language "en". }
 }
 ```
