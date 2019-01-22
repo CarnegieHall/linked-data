@@ -26,7 +26,7 @@ You can download the CH LOD Data model diagram [here](/CarnegieHall_LOD_DataMode
 
 ### Sample Event Record
 
-Below is a CH event record (in Turtle format), followed by statements about one of the work performances and a related performer from the event. View an [HTML representation](https://www.carnegiehall.org/widgets/opas/concert.aspx?id=8195) of this event on the Carnegie Hall Performance History Search.
+Below is a CH event record (in Turtle format), followed by statements about one of the work performances and a related performer from the event. View an [HTML representation](https://www.carnegiehall.org/About/History/Performance-History-Search?q=&dex=prod_PHS&page=2&event=8195&pf=Boston%20Symphony%20Orchestra_Max%20Fiedler_) of this event on the Carnegie Hall Performance History Search.
 
 ```
 <http://data.carnegiehall.org/events/8195> a <http://erlangen-crm.org/160714/E7_Activity>, 
