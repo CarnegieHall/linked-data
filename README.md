@@ -2,9 +2,10 @@
 
 ## OVERVIEW
 
-The purpose of this repository is to share Carnegie Hall's performance history as linked open data, and resources related to its creation and maintenance. 
+The purpose of this repository is to share Carnegie Hall's performance history as linked open data, and resources related to its creation and maintenance. For updates in 2019, follow our progress **[here](https://github.com/CarnegieHall/linked-data/issues/13)**.
 
-🔴 Explore Carnegie Hall's linked open data [here](http://data.carnegiehall.org), and read more about it below.
+
+🔴 **Explore Carnegie Hall's linked open data [here](http://data.carnegiehall.org).**
 
 ## CONTENTS
 
@@ -17,7 +18,7 @@ The Carnegie Hall Archives believes in showing its work. To that goal, this repo
 ## CARNEGIE HALL PERFORMANCE HISTORY AS LINKED OPEN DATA
 
 ### About the Data Set
-The initial release encompasses performance history data from 1891 through the end of the 2015-16 concert season (July 15, 2016). The Carnegie Hall Archives intends to release updated data sets at semi-regular (e.g. 3-6 month) intervals.
+The initial release encompasses performance history data from 1891 through the end of the 2015-16 concert season (July 15, 2016). 
 
 #### What Does "Performance History" Mean at CH?
 
