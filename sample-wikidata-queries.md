@@ -327,12 +327,17 @@ WHERE
 ```
 ### Find Wikidata items with CH Work ID
 ```
-#Find Wikidata items with CH Agent ID
-SELECT ?item ?chURL
+#Find Wikidata items with CH Work ID
+#Excludes items that are instance of "single" (Q134556)
+SELECT DISTINCT ?item ?chURL
 WHERE 
 {
-  wd:P4104 wdt:P1630 ?formatterurl.
-    ?item wdt:P5229 ?chWorkID .
-  BIND(IRI(REPLACE(?chWorkID, '^(.+)$', ?formatterurl)) AS ?chURL).
+  wd:P5229 wdt:P1630 ?formatterurl.
+    ?item wdt:P5229 ?chWorkID ;
+          (wdt:P31/wdt:P279*) wd:Q2188189 .
 
+  OPTIONAL{wd:P5229 wdt:P1630 ?formatterurl.
+           ?item wdt:P5229 ?chWorkID ;
+                 (wdt:P31/wdt:P279*) wd:Q7725634 .}
+  BIND(IRI(REPLACE(?chWorkID, '^(.+)$', ?formatterurl)) AS ?chURL).
 }
