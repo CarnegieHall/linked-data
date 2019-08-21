@@ -315,6 +315,7 @@ GROUP BY ?personLabel ?personImage ?phsLink ?birthDate ?deathDate ?city ?cityLab
 ```
 ### Find Wikidata items with CH Agent ID
 ```
+#Find Wikidata items with CH Agent ID
 SELECT ?item ?chURL
 WHERE 
 {
@@ -322,5 +323,16 @@ WHERE
     ?item wdt:P4104 ?chAgentID .
   BIND(IRI(REPLACE(?chAgentID, '^(.+)$', ?formatterurl)) AS ?chURL).
 
-  SERVICE wikibase:label { bd:serviceParam wikibase:language "[AUTO_LANGUAGE],en". }
+}
+```
+### Find Wikidata items with CH Work ID
+```
+#Find Wikidata items with CH Agent ID
+SELECT ?item ?chURL
+WHERE 
+{
+  wd:P4104 wdt:P1630 ?formatterurl.
+    ?item wdt:P5229 ?chWorkID .
+  BIND(IRI(REPLACE(?chWorkID, '^(.+)$', ?formatterurl)) AS ?chURL).
+
 }
