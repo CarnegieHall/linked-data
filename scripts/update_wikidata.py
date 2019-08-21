@@ -7,7 +7,8 @@
 ## Argument[0] is script to run
 ## Argument[1] is path to json query results from data.carnegiehall.org (IDs w/WD link)
 ## Argument[2] is path to csv query results from wikidata (items w/CH Agent ID)
-## Argument[3] is destination directory for output TSV of WD IDs and CH IDs
+## Argument[3] is the Wikidata property to update (Agent=P4104 | Work=P5229)
+## Argument[4] is destination directory for output TSV of WD IDs and CH IDs
 
 import csv
 import json
@@ -17,7 +18,8 @@ from urllib.parse import urlparse
 
 filePath_1 = sys.argv[1]
 filePath_2 = sys.argv[2]
-filePath_3 = sys.argv[3]
+wdProperty = sys.argv[3]
+filePath_3 = sys.argv[4]
 
 ch_WikiDict = {}
 wikiDict = {}
@@ -57,7 +59,7 @@ outputPath = ''.join([str(filePath_3), '/wikidataUpdate.tsv'])
 with open(outputPath, 'w', newline='') as tsvfile:
     w = csv.writer(tsvfile, delimiter="\t", quotechar="'")
     for key, val in wiki_updateDict.items():
-        w.writerow([key, 'P4104', f'"{val}"'])
+        w.writerow([key, wdProperty, f'"{val}"'])
 
 print(f'There are {c} Wikidata IDs without CH Agent IDs')
 print('Finished creating wikidataUpdate')
