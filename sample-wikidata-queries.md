@@ -341,3 +341,21 @@ WHERE
                  (wdt:P31/wdt:P279*) wd:Q7725634 .}
   BIND(IRI(REPLACE(?chWorkID, '^(.+)$', ?formatterurl)) AS ?chURL).
 }
+```
+### Find CH premieres of any type associated with a conductor (no limit)
+```
+PREFIX chnames: http://data.carnegiehall.org/names/
+PREFIX dcterms: http://purl.org/dc/terms/
+PREFIX rdfs: http://www.w3.org/2000/01/rdf-schema#
+PREFIX event: http://purl.org/NET/c4dm/event.owl#
+select ?work ?workTitle ?comment ?event ?eventTitle ?eventDate where { 
+   ?work dcterms:creator chnames:1002833 ;
+         rdfs:label ?workTitle .
+   ?event event:product ?workPerformance ;
+          rdfs:label ?eventTitle ;
+          dcterms:date ?eventDate .
+   ?workPerformance event:product ?work;
+                    rdfs:comment ?comment .
+   filter contains(?comment, "premiere")
+} 
+```
