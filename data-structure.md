@@ -5,6 +5,7 @@
 This page provides details about the creation and structure of Carnegie Hall (CH) Linked Open Data (LOD). To learn more about the project and content of the dataset, please see the CH LOD repository's [README](./README.md).
 
 🔴 Query the data [here](http://data.carnegiehall.org).
+🔴 Visit our Carnegie Hall Data Lab, a learning space for us to experiment with LOD and semantic technologies, [here](https://carnegiehall.github.io/datalab/)
 
 ## ADDITIONAL DOCUMENTATION
 
