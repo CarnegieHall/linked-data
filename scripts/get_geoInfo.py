@@ -22,8 +22,9 @@ wgs84_pos = Namespace('http://www.w3.org/2003/01/geo/wgs84_pos#')
 
 filePath_1 = sys.argv[1]
 
-with open(filePath_1, 'rU') as f1:
+with open(filePath_1, newline=None) as f1:
     geoURIs = csv.reader(f1, dialect='excel', delimiter=',', quotechar='"')
+    next(geoURIs, None)  # skip the headers
     for item in geoURIs:
         geoURI = item[0]
         uri = ''.join([geoURI, 'about.rdf'])
