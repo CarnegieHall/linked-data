@@ -230,40 +230,6 @@ WHERE
    }
 } GROUP BY ?place ?writer ?linkcount HAVING (?linkcount > 10) ORDER BY DESC(?linkcount)
 ```
-### Map of birthplaces of pianists with a CH Agent ID, with image (filter city by population)
-```
-#defaultView:Map
-#view:Map{"hide": ["?location", "?population", "?layer"]}
-SELECT ?person ?personLabel ?personImage ?birthDate ?deathDate ?city ?cityLabel 
-(SAMPLE(?location) AS ?location) (MAX(?population) AS ?population) (SAMPLE(?layer) AS ?layer)
-(IRI(CONCAT("https://www.carnegiehall.org/About/History/Performance-History-Search?q=&dex=prod_PHS&pf=", 
-              (STR(ENCODE_FOR_URI(?personLabel))))) AS ?phsLink)
-WHERE {
-  ?person wdt:P31 wd:Q5;
-          wdt:P19 ?city;
-          wdt:P4104 ?chAgent_id;
-          wdt:P106 wd:Q486748 .
-  ?city wdt:P625 ?location;
-        wdt:P1082 ?population .
-  FILTER (xsd:integer(?chAgent_id) < 1000000).
-  OPTIONAL { ?person wdt:P18 ?personImage }
-  OPTIONAL { ?person wdt:P569 ?birthDate }
-  OPTIONAL { ?person wdt:P570 ?deathDate }
-  BIND(
-    IF(?population < 10000, "Pop. 1k-10k",
-    IF(?population < 50000, "Pop. 10k-50k",
-    IF(?population < 100000, "Pop. 50k-100k",
-    IF(?population < 500000, "Pop. 100k-500k", 
-    IF(?population < 1000000, "Pop. 500k-1M",
-    IF(?population < 10000000, "Pop. 1M-10M",
-    IF(?population < 50000000, "Pop. 50M-100M",
-    "Pop. >100M")))))))
-    AS ?layer).
-
-  SERVICE wikibase:label { bd:serviceParam wikibase:language "en". }
-}
-GROUP BY ?person ?personLabel ?personImage ?phsLink ?birthDate ?deathDate ?city ?cityLabel
-```
 ### Map of birthplaces of pianists with a CH Agent ID, with image (filter by sign of the Zodiac)
 ```
 #defaultView:Map
