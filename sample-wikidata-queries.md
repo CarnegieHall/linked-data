@@ -39,14 +39,20 @@ ORDER BY ?composerLabel ?tonalityLabel
 ```
 ### People from CH performance history that received a Grammy Award
 ```
-#People from CH performance history that received Grammy Award
+#People from CH performance history that received a Grammy Award
 #defaultView:ImageGrid
-SELECT DISTINCT ?person ?personLabel ?personImage WHERE {
-  ?person (wdt:P166/wdt:P279*) wd:Q41254 ;
-                               wdt:P4104 ?chAgent_id .
-  OPTIONAL { ?person wdt:P18 ?personImage. }
-  SERVICE wikibase:label { bd:serviceParam wikibase:language "en". }
-}
+select ?person ?personLabel ?personImage (CONCAT("Number of Grammys: ", STR(count(?award))) as ?awardCount) 
+where {
+  ?award (wdt:P31/wdt:P279*) wd:Q41254 .
+  ?person wdt:P31 wd:Q5 ; 
+          p:P166 ?awardStmt ; 
+          wdt:P4104 ?chAgentID .
+  ?awardStmt ps:P166 ?award . 
+  OPTIONAL {?person wdt:P18 ?personImage}
+  SERVICE wikibase:label {            
+    bd:serviceParam wikibase:language "[AUTO_LANGUAGE],en" .
+  }
+} group by ?person ?personLabel ?personImage having (count(?award) > 1) order by desc(count(?award))
 ```
 ### Birthplaces of people named Johann (or replace this name with whatever you want!)
 ```
