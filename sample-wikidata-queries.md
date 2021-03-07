@@ -52,7 +52,7 @@ where {
   SERVICE wikibase:label {            
     bd:serviceParam wikibase:language "[AUTO_LANGUAGE],en" .
   }
-} group by ?person ?personLabel ?personImage having (count(?award) > 1) order by desc(count(?award))
+} group by ?person ?personLabel ?personImage having (count(?award) >= 1) order by desc(count(?award))
 ```
 ### Birthplaces of people named Johann (or replace this name with whatever you want!)
 ```
