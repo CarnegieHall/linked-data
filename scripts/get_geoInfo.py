@@ -15,6 +15,7 @@ from bs4 import BeautifulSoup
 from rdflib import Graph, Literal, Namespace, URIRef
 from rdflib.namespace import RDFS
 from rdflib.plugins.serializers.nt import NTSerializer
+from tqdm import tqdm
 
 gPlaces = Graph()
 gn = Namespace('http://www.geonames.org/ontology#')
@@ -23,9 +24,10 @@ wgs84_pos = Namespace('http://www.w3.org/2003/01/geo/wgs84_pos#')
 filePath_1 = sys.argv[1]
 
 with open(filePath_1, newline=None) as f1:
-    geoURIs = csv.reader(f1, dialect='excel', delimiter=',', quotechar='"')
-    next(geoURIs, None)  # skip the headers
-    for item in geoURIs:
+    reader = csv.reader(f1, dialect='excel', delimiter=',', quotechar='"')
+    next(reader, None)  # skip the headers
+    geoURIs = list(reader)
+    for item in tqdm(geoURIs, desc='Getting GeoNames data', total=len(geoURIs)):
         geoURI = item[0]
         uri = ''.join([geoURI, 'about.rdf'])
         h = httplib2.Http()
