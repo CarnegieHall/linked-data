@@ -28,6 +28,8 @@ with open(filePath_1, newline=None) as f1:
     next(reader, None)  # skip the headers
     geoURIs = list(reader)
     for item in tqdm(geoURIs, desc='Getting GeoNames data', total=len(geoURIs)):
+        if not item:
+            continue
         geoURI = item[0]
         uri = ''.join([geoURI, 'about.rdf'])
         h = httplib2.Http()
@@ -58,6 +60,6 @@ gPlaces.bind("gn", gn)
 gPlaces.bind("rdfs", RDFS)
 gPlaces.bind("wgs84_pos", wgs84_pos)
 
-gPlaces = gPlaces.serialize(destination=places_graph_path, format='nt')
+gPlaces = gPlaces.serialize(destination=places_graph_path, format='nt', encoding='utf-8')
 
 print('Finished getting geo info')
