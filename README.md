@@ -18,7 +18,7 @@ The Carnegie Hall Archives believes in showing its work. To that goal, this repo
 ## CARNEGIE HALL PERFORMANCE HISTORY AS LINKED OPEN DATA
 
 ### About the Data Set
-The initial release encompasses performance history data from 1891 through the end of the 2015-16 concert season (July 15, 2016). 
+The initial release encompassed performance history data from 1891 through the end of the 2015-16 concert season (July 15, 2016). Beginning in August 2019, the data is updated on a weekly basis, and now encompasses performance history data from 1891 – present.
 
 #### What Does "Performance History" Mean at CH?
 
