@@ -85,13 +85,13 @@ This code is provided “as is” and for you to use at your own risk. The infor
 
 We plan to update the scripts regularly. We welcome any [feedback](https://github.com/CarnegieHall/linked-data/issues). Please let us know if you have found the contents of this repository useful!
 
-### LICENSES
-#### DATA LICENSE
-**Carnegie Hall is releasing this performance history dataset with a [Creative Commons CC0 1.0 Universal Public Domain data license](https://creativecommons.org/publicdomain/zero/1.0/)**.
+### PUBLIC DEDICATION AND LICENSE
+#### DATA DEDICATION
+**Carnegie Hall is releasing this performance history dataset with a [Creative Commons CC0 1.0 Universal Public Domain Data Dedication](https://creativecommons.org/publicdomain/zero/1.0/)**.
 
 The Carnegie Hall Performance History dataset includes data from the [GeoNames geographical database](http://www.geonames.org/), which is licensed under a [Creative Commons Attribution 3.0 License](http://creativecommons.org/licenses/by/3.0/).
 
-#### REPOSTIORY AND SCRIPTS LICENSE
+#### REPOSITORY AND SCRIPTS LICENSE
 _The MIT License (MIT)_
 
 _Copyright (c) 2017 Carnegie Hall_
