@@ -12,6 +12,7 @@ Carnegie Hall URIs were minted in the data.carnegiehall.org namespace.
 - Carnegie Hall __Ensembles__: data.carnegiehall.org/ensembles/
 - Carnegie Hall __Roles__: data.carnegiehall.org/roles/
 - Carnegie Hall __Works__: data.carnegiehall.org/works/
+- Carnegie Hall __Role Vocabulary__: data.carnegiehall.org/vocabulary/roles/
 
 
 ----------------------------
