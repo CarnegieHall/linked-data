@@ -16,4 +16,4 @@ Carnegie Hall URIs were minted in the data.carnegiehall.org namespace.
 
 
 ----------------------------
-Go to: [DATA STRUCTURE](/data-structure.md) | [README](/README.md) | [SPARQL ENDPOINT](http://data.carnegiehall.org)
+Go to: [DATA STRUCTURE](/data-structure.md) | [README](/README.md) | [SPARQL ENDPOINT](http://data.carnegiehall.org/sparql/)
