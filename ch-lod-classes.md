@@ -22,4 +22,4 @@ Below are classes used in the Carnegie Hall (CH) data set. The table also includ
 |[Place](http://schema.org/Place)|Entities that have a somewhat fixed, physical extension; in the context of the CH model, currently used to represent birthplaces of Entities and provide a node type suitable for attaching geocoding information|[Schema.org](http://schema.org/)|
 
 ----------------------------
-Go to: [DATA STRUCTURE](/data-structure.md) | [README](/README.md) | [SPARQL ENDPOINT](http://data.carnegiehall.org)
+Go to: [DATA STRUCTURE](/data-structure.md) | [README](/README.md) | [SPARQL ENDPOINT](http://data.carnegiehall.org/sparql/)
