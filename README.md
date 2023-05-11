@@ -5,13 +5,12 @@
 The purpose of this repository is to share Carnegie Hall's performance history as linked open data, and resources related to its creation and maintenance. For updates in 2019, follow our progress **[here](https://github.com/CarnegieHall/linked-data/issues/13)**.
 
 
-🔴 **Explore Carnegie Hall's linked open data [here](http://data.carnegiehall.org).**
+🔴 **Explore Carnegie Hall's linked open data [here](http://data.carnegiehall.org/datalab/).**
 
 ## CONTENTS
 
 The Carnegie Hall Rose Archives believes in showing its work. To that goal, this repository includes:
-- [Link](http://data.carnegiehall.org) to explore the CH LOD via a SPARQL endpoint for querying
-- [Python scripts](/scripts/scripts-overview.md) used to transform CSV to LOD serializations
+- [Link](http://data.carnegiehall.org/sparql/) to explore the CH LOD via a SPARQL endpoint for querying
 - An overview of [Carnegie Hall's performance history](#carnegie-hall-performance-history-as-linked-open-data)
 - Documentation about the [structure and content of the Carnegie Hall linked open data](/data-structure.md)
 
@@ -50,15 +49,13 @@ Interested in the **CH LOD data model, namespaces, URI schemas, vocabularies, an
 
 ### Potential Future Work
 
-Although the CH LOD includes about 3 million triples, there is still information missing from or out of scope of this initial release. Below is a sample of excluded content and topics. See how to [get involved](#get-involved) if you have feedback about the list of information not currently in the dataset.
+Although the CH LOD includes about 4.5 million triples, there is still information missing from or out of scope of this initial release. Below is a sample of excluded content and topics. See how to [get involved](#get-involved) if you have feedback about the list of information not currently in the dataset.
 
 - Some past **performance records are missing**; such data will be added as it becomes available. 
 - **Complete, accurate biographical data is not always available** for performers and composers. To the extent that this information has been provided to Carnegie Hall or is available from published authority sources, it has been added to the dataset. Existing Carnegie Hall URIs will remain stable, but additional or revised statements (e.g. newly acquired birth/death dates, corrected spellings, etc.) may be added at any time.
-- **Additional external authority IDs** - we plan to add more external authority IDs for entities and creative works, and to expand the scope to include Wikidata IDs
-- **Presenting organizations**, e.g. concert management and/or licensees who rented the Hall, are not included in the initial release
-- **Roles and instruments on a specific Work Performance** for an entity. We are working on a way to describe which instrument/role a certain artist played an during a work performance.
+- **Additional external authority IDs** - we plan to add more external authority IDs for entities and creative works
 - **Credited non-performing roles**, e.g. choral/ensemble preparation, technical roles, etc., are not included in the initial release
-- **Building LOD at Carnegie Hall** - How did the Carnegie Hall Archives get from an internal database to 3 million triples containing open data from a dozen ontologies and vocabularies? 
+- **Building LOD at Carnegie Hall** - How did the Carnegie Hall Archives get from an internal database to 4.5 million triples containing open data from a dozen ontologies and vocabularies? 
 
 ## GET INVOLVED
 ### Provide Feedback or Report Issues
@@ -99,7 +96,7 @@ _Copyright (c) 2017 Carnegie Hall_
 All contents are released under the terms described in the [MIT License](https://github.com/CarnegieHall/linked-data/blob/master/LICENSE) included in this repository.
 
 ## ACKNOWLEDGEMENTS 
-Thank you to [Matt Miller](https://github.com/thisismattmiller) for his contributions to this project. 
+Thank you to [Matt Miller](https://github.com/thisismattmiller) and [Gabe Mangiante](https://www.linkedin.com/in/gabemangiante/) for their contributions to this project. 
 
 Thank you to the following organizations for inspiration and commitment to the open data community:
 - [Linked Jazz](https://linkedjazz.org/)
