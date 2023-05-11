@@ -82,4 +82,4 @@ chEvents:8195 a schema:Event ;
 Something in this document unclear? Have a suggestions or comment about a topic described above? Submit your feedback via ['Issues'](https://github.com/CarnegieHall/linked-data/issues).
 
 ----------------------------
-Go to: [README](/README.md) | [SPARQL ENDPOINT](http://data.carnegiehall.org)
+Go to: [README](/README.md) | [SPARQL ENDPOINT](http://data.carnegiehall.org/sparql/)
