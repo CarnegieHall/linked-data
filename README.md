@@ -9,7 +9,7 @@ The purpose of this repository is to share Carnegie Hall's performance history a
 
 ## CONTENTS
 
-The Carnegie Hall Archives believes in showing its work. To that goal, this repository includes:
+The Carnegie Hall Rose Archives believes in showing its work. To that goal, this repository includes:
 - [Link](http://data.carnegiehall.org) to explore the CH LOD via a SPARQL endpoint for querying
 - [Python scripts](/scripts/scripts-overview.md) used to transform CSV to LOD serializations
 - An overview of [Carnegie Hall's performance history](#carnegie-hall-performance-history-as-linked-open-data)
@@ -24,7 +24,7 @@ The initial release encompassed performance history data from 1891 through the e
 
 Since it opened in 1891, Carnegie Hall has been a center of cultural and political expression, presenting and providing a venue for many different types of music and culture across multiple performance spaces. Since its transition to a not-for-profit institution in 1960, Carnegie Hall has continued to deepen its commitment to music education and community outreach by presenting concerts and events in neighborhoods throughout New York City, across the United States, and worldwide.
 
-The Carnegie Hall Archives maintains a database, the [Orchestra Planning and Administration System (OPAS)](http://fineartssoftware.com/), with a goal to track every event – musical and nonmusical – that has occurred in the public performance spaces of CH since 1891. Since our archives were not established until 1986, there are some gaps in these records, which we continue to fill using sources like digitized newspaper listings and reviews; many missing pieces – concert programs, posters, etc. – are donated to us, or we buy them on eBay. This database now covers **more than 55,000 events across nearly all musical genres, as well as theatrical, dance and spoken word events, meetings, lectures, civic rallies, and political conventions**. It also includes corresponding records for more than 110,000 artists, 25,000 composers and over 100,000 musical works.
+The Carnegie Hall Rose Archives maintains a database, the [Orchestra Planning and Administration System (OPAS)](http://fineartssoftware.com/), with a goal to track every event – musical and nonmusical – that has occurred in the public performance spaces of CH since 1891. Since our archives were not established until 1986, there are some gaps in these records, which we continue to fill using sources like digitized newspaper listings and reviews; many missing pieces – concert programs, posters, etc. – are donated to us, or we buy them on eBay. This database now covers **more than 55,000 events across nearly all musical genres, as well as theatrical, dance and spoken word events, meetings, lectures, civic rallies, and political conventions**. It also includes corresponding records for more than 110,000 artists, 25,000 composers and over 100,000 musical works.
 
 Starting in 2013, Carnegie Hall began publishing some of these records to our online [Performance History Search](https://www.carnegiehall.org/PerformanceHistorySearch/). The Performance History Search has records for more than 49,000 events from 1891 to the present. Data cleanup efforts are ongoing, and new records are published each month to that HMTL presentation. The Carnegie Hall linked data prototype uses this published data set.
 
