@@ -5,26 +5,25 @@
 The purpose of this repository is to share Carnegie Hall's performance history as linked open data, and resources related to its creation and maintenance. For updates in 2019, follow our progress **[here](https://github.com/CarnegieHall/linked-data/issues/13)**.
 
 
-🔴 **Explore Carnegie Hall's linked open data [here](http://data.carnegiehall.org).**
+🔴 **Explore Carnegie Hall's linked open data [here](http://data.carnegiehall.org/datalab/).**
 
 ## CONTENTS
 
-The Carnegie Hall Archives believes in showing its work. To that goal, this repository includes:
-- [Link](http://data.carnegiehall.org) to explore the CH LOD via a SPARQL endpoint for querying
-- [Python scripts](/scripts/scripts-overview.md) used to transform CSV to LOD serializations
+The Carnegie Hall Rose Archives believes in showing its work. To that goal, this repository includes:
+- [Link](http://data.carnegiehall.org/sparql/) to explore the CH LOD via a SPARQL endpoint for querying
 - An overview of [Carnegie Hall's performance history](#carnegie-hall-performance-history-as-linked-open-data)
 - Documentation about the [structure and content of the Carnegie Hall linked open data](/data-structure.md)
 
 ## CARNEGIE HALL PERFORMANCE HISTORY AS LINKED OPEN DATA
 
 ### About the Data Set
-The initial release encompasses performance history data from 1891 through the end of the 2015-16 concert season (July 15, 2016). 
+The initial release encompassed performance history data from 1891 through the end of the 2015-16 concert season (July 15, 2016). Beginning in August 2019, the data is updated on a weekly basis, and now encompasses performance history data from 1891 – present.
 
 #### What Does "Performance History" Mean at CH?
 
 Since it opened in 1891, Carnegie Hall has been a center of cultural and political expression, presenting and providing a venue for many different types of music and culture across multiple performance spaces. Since its transition to a not-for-profit institution in 1960, Carnegie Hall has continued to deepen its commitment to music education and community outreach by presenting concerts and events in neighborhoods throughout New York City, across the United States, and worldwide.
 
-The Carnegie Hall Archives maintains a database, the [Orchestra Planning and Administration System (OPAS)](http://fineartssoftware.com/), with a goal to track every event – musical and nonmusical – that has occurred in the public performance spaces of CH since 1891. Since our archives were not established until 1986, there are some gaps in these records, which we continue to fill using sources like digitized newspaper listings and reviews; many missing pieces – concert programs, posters, etc. – are donated to us, or we buy them on eBay. This database now covers **more than 50,000 events across nearly all musical genres, as well as theatrical, dance and spoken word events, meetings, lectures, civic rallies, and political conventions**. It also includes corresponding records for more than 100,000 artists, 20,000 composers and over 100,000 musical works.
+The Carnegie Hall Rose Archives maintains a database, the [Orchestra Planning and Administration System (OPAS)](http://fineartssoftware.com/), with a goal to track every event – musical and nonmusical – that has occurred in the public performance spaces of CH since 1891. Since our archives were not established until 1986, there are some gaps in these records, which we continue to fill using sources like digitized newspaper listings and reviews; many missing pieces – concert programs, posters, etc. – are donated to us, or we buy them on eBay. This database now covers **more than 55,000 events across nearly all musical genres, as well as theatrical, dance and spoken word events, meetings, lectures, civic rallies, and political conventions**. It also includes corresponding records for more than 110,000 artists, 25,000 composers and over 100,000 musical works.
 
 Starting in 2013, Carnegie Hall began publishing some of these records to our online [Performance History Search](https://www.carnegiehall.org/PerformanceHistorySearch/). The Performance History Search has records for more than 49,000 events from 1891 to the present. Data cleanup efforts are ongoing, and new records are published each month to that HMTL presentation. The Carnegie Hall linked data prototype uses this published data set.
 
@@ -50,15 +49,13 @@ Interested in the **CH LOD data model, namespaces, URI schemas, vocabularies, an
 
 ### Potential Future Work
 
-Although the CH LOD includes about 3 million triples, there is still information missing from or out of scope of this initial release. Below is a sample of excluded content and topics. See how to [get involved](#get-involved) if you have feedback about the list of information not currently in the dataset.
+Although the CH LOD includes about 4.5 million triples, there is still information missing from or out of scope of this initial release. Below is a sample of excluded content and topics. See how to [get involved](#get-involved) if you have feedback about the list of information not currently in the dataset.
 
 - Some past **performance records are missing**; such data will be added as it becomes available. 
 - **Complete, accurate biographical data is not always available** for performers and composers. To the extent that this information has been provided to Carnegie Hall or is available from published authority sources, it has been added to the dataset. Existing Carnegie Hall URIs will remain stable, but additional or revised statements (e.g. newly acquired birth/death dates, corrected spellings, etc.) may be added at any time.
-- **Additional external authority IDs** - we plan to add more external authority IDs for entities and creative works, and to expand the scope to include Wikidata IDs
-- **Presenting organizations**, e.g. concert management and/or licensees who rented the Hall, are not included in the initial release
-- **Roles and instruments on a specific Work Performance** for an entity. We are working on a way to describe which instrument/role a certain artist played an during a work performance.
+- **Additional external authority IDs** - we plan to add more external authority IDs for entities and creative works
 - **Credited non-performing roles**, e.g. choral/ensemble preparation, technical roles, etc., are not included in the initial release
-- **Building LOD at Carnegie Hall** - How did the Carnegie Hall Archives get from an internal database to 3 million triples containing open data from a dozen ontologies and vocabularies? 
+- **Building LOD at Carnegie Hall** - How did the Carnegie Hall Archives get from an internal database to 4.5 million triples containing open data from a dozen ontologies and vocabularies? 
 
 ## GET INVOLVED
 ### Provide Feedback or Report Issues
@@ -85,13 +82,13 @@ This code is provided “as is” and for you to use at your own risk. The infor
 
 We plan to update the scripts regularly. We welcome any [feedback](https://github.com/CarnegieHall/linked-data/issues). Please let us know if you have found the contents of this repository useful!
 
-### LICENSES
-#### DATA LICENSE
-**Carnegie Hall is releasing this performance history dataset with a [Creative Commons CC0 1.0 Universal Public Domain data license](https://creativecommons.org/publicdomain/zero/1.0/)**.
+### PUBLIC DEDICATION AND LICENSE
+#### DATA DEDICATION
+**Carnegie Hall is releasing this performance history dataset with a [Creative Commons CC0 1.0 Universal Public Domain Data Dedication](https://creativecommons.org/publicdomain/zero/1.0/)**.
 
 The Carnegie Hall Performance History dataset includes data from the [GeoNames geographical database](http://www.geonames.org/), which is licensed under a [Creative Commons Attribution 3.0 License](http://creativecommons.org/licenses/by/3.0/).
 
-#### REPOSTIORY AND SCRIPTS LICENSE
+#### REPOSITORY AND SCRIPTS LICENSE
 _The MIT License (MIT)_
 
 _Copyright (c) 2017 Carnegie Hall_
@@ -99,7 +96,7 @@ _Copyright (c) 2017 Carnegie Hall_
 All contents are released under the terms described in the [MIT License](https://github.com/CarnegieHall/linked-data/blob/master/LICENSE) included in this repository.
 
 ## ACKNOWLEDGEMENTS 
-Thank you to [Matt Miller](https://github.com/thisismattmiller) for his contributions to this project. 
+Thank you to [Matt Miller](https://github.com/thisismattmiller) and [Gabe Mangiante](https://www.linkedin.com/in/gabemangiante/) for their contributions to this project. 
 
 Thank you to the following organizations for inspiration and commitment to the open data community:
 - [Linked Jazz](https://linkedjazz.org/)
