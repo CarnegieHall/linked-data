@@ -73,7 +73,7 @@ Did you use the CH LOD to build an interesting visualization, or port it into a 
 ## USAGE AND LICENSE
 ### USAGE GUIDELINES
 #### DATA
-Carnegie Hall offers the CH Performance History as Linked Open Data dataset as-is and makes no representations or warranties of any kind concerning the contents. Please see the data license statement below.
+Carnegie Hall offers the CH Performance History as Linked Open Data dataset and schema as-is and makes no representations or warranties of any kind concerning the contents. Please see the data license statement below.
 
 If you have questions about the dataset or its usage, please submit a new ['Issue'](https://github.com/CarnegieHall/linked-data/issues) or email *archives at carnegiehall dot org*. 
 
@@ -84,7 +84,7 @@ We plan to update the scripts regularly. We welcome any [feedback](https://githu
 
 ### PUBLIC DEDICATION AND LICENSE
 #### DATA DEDICATION
-**Carnegie Hall is releasing this performance history dataset with a [Creative Commons CC0 1.0 Universal Public Domain Data Dedication](https://creativecommons.org/publicdomain/zero/1.0/)**.
+**Carnegie Hall is releasing this performance history dataset and schema with a [Creative Commons CC0 1.0 Universal Public Domain Data Dedication](https://creativecommons.org/publicdomain/zero/1.0/)**.
 
 The Carnegie Hall Performance History dataset includes data from the [GeoNames geographical database](http://www.geonames.org/), which is licensed under a [Creative Commons Attribution 3.0 License](http://creativecommons.org/licenses/by/3.0/).
 
